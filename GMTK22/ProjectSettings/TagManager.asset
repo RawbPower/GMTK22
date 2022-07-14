@@ -3,9 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Enemy
-  - Ground
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -13,16 +11,16 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
-  - Player
-  - Enemy
-  - Hurtbox
-  - Hitbox
-  - Through
-  - Alert Area
-  - Pickup
-  - Particles
-  - Vehicle
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -42,16 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Background
-    uniqueID: 3365561713
-    locked: 0
-  - name: Player
-    uniqueID: 4246891621
-    locked: 0
-  - name: Ground
-    uniqueID: 2212045639
-    locked: 0
-  - name: Particles
-    uniqueID: 656158583
     locked: 0
