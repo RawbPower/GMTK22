@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public struct DiceEffect
+{
+    public int flipsNorth;
+    public int flipsNorthEast;
+    public int flipsEast;
+    public int flipsSouthEast;
+    public int flipsSouth;
+    public int flipsSouthWest;
+    public int flipsWest;
+    public int flipsNorthWest;
+}
+
 public class Dice : MonoBehaviour
 {
-    [System.Serializable]
-    public struct DiceEffect
-    {
-        public int flipsNorth;
-        public int flipsNorthEast;
-        public int flipsEast;
-        public int flipsSouthEast;
-        public int flipsSouth;
-        public int flipsSouthWest;
-        public int flipsWest;
-        public int flipsNorhtWest;
-    }
-
     public Sprite[] diceFaces;
     public Material highlightMaterial;
     public DiceEffect diceEffect1;
@@ -46,7 +46,7 @@ public class Dice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (number != currentSpriteFaceIndex)
+        if (number-1 != currentSpriteFaceIndex)
         {
             RenderDiceFace();
         }
@@ -54,13 +54,14 @@ public class Dice : MonoBehaviour
 
     void RenderDiceFace()
     {
-        currentSpriteFaceIndex = number;
+        currentSpriteFaceIndex = number-1;
         spriteRenderer.sprite = diceFaces[currentSpriteFaceIndex];
     }
 
     public void RollDice()
     {
-        number = Random.Range(0, 6);
+        number = Random.Range(1, 7);
+        Debug.Log("Roll Dice: " + number);
     }
 
     public bool IsPointOnDice(Vector2 position)
@@ -76,5 +77,32 @@ public class Dice : MonoBehaviour
     public void UnhighlightDice()
     {
         spriteRenderer.material = defaultMaterial;
+    }
+
+    public int GetNumber()
+    {
+        return number;
+    }
+
+    public DiceEffect GetDiceEffect()
+    {
+        switch (number)
+        {
+            case 1:
+                return diceEffect1;
+            case 2:
+                return diceEffect2;
+            case 3:
+                return diceEffect3;
+            case 4:
+                return diceEffect4;
+            case 5:
+                return diceEffect5;
+            case 6:
+                return diceEffect6;
+        }
+
+        DiceEffect nullDiceEffect = new DiceEffect();
+        return nullDiceEffect;
     }
 }

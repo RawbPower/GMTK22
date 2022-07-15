@@ -20,6 +20,7 @@ public class DiceTable : MonoBehaviour
     private float gridWidth;
     private float diceWidth;
     private float diceHeight;
+    private Dice[] effectedDice;
 
     // Start is called before the first frame update
     void Start()
@@ -35,45 +36,47 @@ public class DiceTable : MonoBehaviour
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPosition.z = 0.0f;
 
-        // If dice is clicked roll it
-        if (Input.GetMouseButtonDown(0))
+        Dice selectedDice = null;
+        Vector2Int hoverDiceIndex = new Vector2Int(0, 0);
+        for (int i = 0; i < dicePerRow; i++)
         {
-            bool diceFound = false;
-            for (int i = 0; i < dicePerRow; i++)
+            for (int j = 0; j < dicePerColumn; j++)
             {
-                for (int j = 0; j < dicePerColumn; j++)
+                Dice dice = diceGrid[i, j].dice;
+                if (dice.IsPointOnDice(mouseWorldPosition))
                 {
-                    Dice dice = diceGrid[i, j].dice;
-                    if (dice.IsPointOnDice(mouseWorldPosition))
-                    {
-                        dice.RollDice();
-                        Debug.Log("Roll Dice: " + dice.gameObject.name);
-                        diceFound = true;
-                        break;
-                    }
+                    dice.HighlightDice();
+                    selectedDice = diceGrid[i, j].dice;
+                    hoverDiceIndex = new Vector2Int(i, j);
                 }
-                
-                if (diceFound)
+                else
                 {
-                    break;
+                    dice.UnhighlightDice();
                 }
             }
         }
-        else  // If mouse is over dice then highlight it
+
+        effectedDice = new Dice[0];
+        if (selectedDice)
         {
-            for (int i = 0; i < dicePerRow; i++)
+            DiceEffect diceEffect = selectedDice.GetDiceEffect();
+            effectedDice = GetEffectDice(hoverDiceIndex, diceEffect);
+            foreach (Dice dice in effectedDice)
             {
-                for (int j = 0; j < dicePerColumn; j++)
+                dice.HighlightDice();
+            }
+        }
+
+        // If dice is clicked roll it
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (selectedDice)
+            {
+                selectedDice.RollDice();
+
+                foreach (Dice dice in effectedDice)
                 {
-                    Dice dice = diceGrid[i, j].dice;
-                    if (dice.IsPointOnDice(mouseWorldPosition))
-                    {
-                        dice.HighlightDice();
-                    }
-                    else
-                    {
-                        dice.UnhighlightDice();
-                    }
+                    dice.RollDice();
                 }
             }
         }
@@ -99,5 +102,150 @@ public class DiceTable : MonoBehaviour
                 diceGrid[i, j].position = dicePos;
             }
         }
+    }
+
+    public int GetNumberOfDice(int number)
+    {
+        int numberOfDice = 0;
+
+        for (int i = 0; i < dicePerRow; i++)
+        {
+            for (int j = 0; j < dicePerColumn; j++)
+            {
+                if (diceGrid[i,j].dice.GetNumber() == number)
+                {
+                    numberOfDice++;
+                }
+            }
+        }
+
+        return numberOfDice;
+    }
+
+    Dice[] GetEffectDice(Vector2Int diceIndex, DiceEffect diceEffect)
+    {
+        List<Dice> effectedDice = new List<Dice>();
+
+        // North effected dice
+        for (int i = 1; i < diceEffect.flipsNorth+1; i++)
+        {
+            int x = diceIndex.x;
+            int y = diceIndex.y - i;
+            if (y < 0)
+            {
+                break;
+            }
+            else
+            {
+                effectedDice.Add(diceGrid[x, y].dice);
+            }
+        }
+
+        // North East effected dice
+        for (int i = 1; i < diceEffect.flipsNorthEast+1; i++)
+        {
+            int x = diceIndex.x + i;
+            int y = diceIndex.y - i;
+            if (y < 0 || x > dicePerRow-1)
+            {
+                break;
+            }
+            else
+            {
+                effectedDice.Add(diceGrid[x, y].dice);
+            }
+        }
+
+        // East effected dice
+        for (int i = 1; i < diceEffect.flipsEast+1; i++)
+        {
+            int x = diceIndex.x + i;
+            int y = diceIndex.y;
+            if (x > dicePerRow-1)
+            {
+                break;
+            }
+            else
+            {
+                effectedDice.Add(diceGrid[x, y].dice);
+            }
+        }
+
+        // South East effected dice
+        for (int i = 1; i < diceEffect.flipsSouthEast+1; i++)
+        {
+            int x = diceIndex.x + i;
+            int y = diceIndex.y + i;
+            if (y > dicePerColumn-1 || x > dicePerRow-1)
+            {
+                break;
+            }
+            else
+            {
+                effectedDice.Add(diceGrid[x, y].dice);
+            }
+        }
+
+        // South effected dice
+        for (int i = 1; i < diceEffect.flipsSouth+1; i++)
+        {
+            int x = diceIndex.x;
+            int y = diceIndex.y + i;
+            if (y > dicePerColumn-1)
+            {
+                break;
+            }
+            else
+            {
+                effectedDice.Add(diceGrid[x, y].dice);
+            }
+        }
+
+        // South West effected dice
+        for (int i = 1; i < diceEffect.flipsSouthWest+1; i++)
+        {
+            int x = diceIndex.x - i;
+            int y = diceIndex.y + i;
+            if (y > dicePerColumn-1 || x < 0)
+            {
+                break;
+            }
+            else
+            {
+                effectedDice.Add(diceGrid[x, y].dice);
+            }
+        }
+
+        // West effected dice
+        for (int i = 1; i < diceEffect.flipsWest+1; i++)
+        {
+            int x = diceIndex.x - i;
+            int y = diceIndex.y;
+            if (x < 0)
+            {
+                break;
+            }
+            else
+            {
+                effectedDice.Add(diceGrid[x, y].dice);
+            }
+        }
+
+        // North West effected dice
+        for (int i = 1; i < diceEffect.flipsNorthWest+1; i++)
+        {
+            int x = diceIndex.x - i;
+            int y = diceIndex.y - i;
+            if (y < 0 || x < 0)
+            {
+                break;
+            }
+            else
+            {
+                effectedDice.Add(diceGrid[x, y].dice);
+            }
+        }
+
+        return effectedDice.ToArray();
     }
 }

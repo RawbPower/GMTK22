@@ -106,6 +106,60 @@ MonoBehaviour:
   - {fileID: -2064226342, guid: 5ebec2f35d80c774ea094546c34008ff, type: 3}
   - {fileID: 1497550675, guid: 5ebec2f35d80c774ea094546c34008ff, type: 3}
   highlightMaterial: {fileID: 2100000, guid: 9740eb98853418442af1357c447bc039, type: 2}
+  diceEffect1:
+    flipsNorth: 0
+    flipsNorthEast: 0
+    flipsEast: 0
+    flipsSouthEast: 0
+    flipsSouth: 0
+    flipsSouthWest: 0
+    flipsWest: 0
+    flipsNorthWest: 0
+  diceEffect2:
+    flipsNorth: 1
+    flipsNorthEast: 0
+    flipsEast: 0
+    flipsSouthEast: 0
+    flipsSouth: 1
+    flipsSouthWest: 0
+    flipsWest: 0
+    flipsNorthWest: 0
+  diceEffect3:
+    flipsNorth: 0
+    flipsNorthEast: 0
+    flipsEast: 1
+    flipsSouthEast: 0
+    flipsSouth: 0
+    flipsSouthWest: 0
+    flipsWest: 1
+    flipsNorthWest: 0
+  diceEffect4:
+    flipsNorth: 1
+    flipsNorthEast: 0
+    flipsEast: 1
+    flipsSouthEast: 0
+    flipsSouth: 1
+    flipsSouthWest: 0
+    flipsWest: 1
+    flipsNorthWest: 0
+  diceEffect5:
+    flipsNorth: 0
+    flipsNorthEast: 1
+    flipsEast: 0
+    flipsSouthEast: 1
+    flipsSouth: 0
+    flipsSouthWest: 1
+    flipsWest: 0
+    flipsNorthWest: 1
+  diceEffect6:
+    flipsNorth: 2
+    flipsNorthEast: 0
+    flipsEast: 2
+    flipsSouthEast: 0
+    flipsSouth: 2
+    flipsSouthWest: 0
+    flipsWest: 2
+    flipsNorthWest: 0
 --- !u!61 &234826615221663037
 BoxCollider2D:
   m_ObjectHideFlags: 0
