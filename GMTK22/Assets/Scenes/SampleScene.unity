@@ -187,6 +187,7 @@ MonoBehaviour:
   - {fileID: -1628186936, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
+  highlightMaterial: {fileID: 0}
 --- !u!212 &483180092
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -236,7 +237,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &483180093
@@ -460,6 +461,7 @@ MonoBehaviour:
   - {fileID: -1628186936, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
+  highlightMaterial: {fileID: 0}
 --- !u!212 &599217290
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -509,7 +511,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &599217291
@@ -702,6 +704,7 @@ MonoBehaviour:
   - {fileID: -1628186936, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
+  highlightMaterial: {fileID: 0}
 --- !u!212 &892212829
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -751,7 +754,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &892212830
@@ -833,6 +836,7 @@ MonoBehaviour:
   - {fileID: -1628186936, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
+  highlightMaterial: {fileID: 0}
 --- !u!212 &1277313152
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -882,7 +886,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1277313153
@@ -964,6 +968,7 @@ MonoBehaviour:
   - {fileID: -1628186936, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
+  highlightMaterial: {fileID: 0}
 --- !u!212 &1290425483
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1013,7 +1018,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1290425484
@@ -1095,6 +1100,7 @@ MonoBehaviour:
   - {fileID: -1628186936, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
+  highlightMaterial: {fileID: 0}
 --- !u!212 &1585852316
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1144,7 +1150,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1585852317
@@ -1226,6 +1232,7 @@ MonoBehaviour:
   - {fileID: -1628186936, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
+  highlightMaterial: {fileID: 0}
 --- !u!212 &1697030929
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1275,7 +1282,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1697030930
@@ -1322,7 +1329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d4212404907d9448c04b647b4ea91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dicePerRow: 6
+  dicePerRow: 8
   dicePerColumn: 6
   diceSpacing: 0.25
   dicePrefab: {fileID: 234826615221663033, guid: 9c4a2a40d2ca59446bb391225c42e796, type: 3}
@@ -1405,6 +1412,7 @@ MonoBehaviour:
   - {fileID: -1628186936, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
+  highlightMaterial: {fileID: 0}
 --- !u!212 &1832930898
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1454,7 +1462,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1832930899
@@ -1577,11 +1585,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 234826615221663038, guid: 9c4a2a40d2ca59446bb391225c42e796, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.1293999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 234826615221663038, guid: 9c4a2a40d2ca59446bb391225c42e796, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0906
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 234826615221663038, guid: 9c4a2a40d2ca59446bb391225c42e796, type: 3}
       propertyPath: m_LocalPosition.z
