@@ -14,6 +14,12 @@ public class DiceTableUI : MonoBehaviour
     public GameObject dice4Score;
     public GameObject dice5Score;
     public GameObject dice6Score;
+    public Image dice1Image;
+    public Image dice2Image;
+    public Image dice3Image;
+    public Image dice4Image;
+    public Image dice5Image;
+    public Image dice6Image;
 
     // Start is called before the first frame update
     void Start()
@@ -33,12 +39,19 @@ public class DiceTableUI : MonoBehaviour
             int num5Dice = diceTable.GetNumberOfDice(5);
             int num6Dice = diceTable.GetNumberOfDice(6);
 
-            dice1Score.GetComponent<TMPro.TextMeshProUGUI>().text = num1Dice.ToString();
-            dice2Score.GetComponent<TMPro.TextMeshProUGUI>().text = num2Dice.ToString();
-            dice3Score.GetComponent<TMPro.TextMeshProUGUI>().text = num3Dice.ToString();
-            dice4Score.GetComponent<TMPro.TextMeshProUGUI>().text = num4Dice.ToString();
-            dice5Score.GetComponent<TMPro.TextMeshProUGUI>().text = num5Dice.ToString();
-            dice6Score.GetComponent<TMPro.TextMeshProUGUI>().text = num6Dice.ToString();
+            dice1Score.GetComponent<TMPro.TextMeshProUGUI>().text = diceTable.GetDiceEffectByNumber(1).name;
+            dice2Score.GetComponent<TMPro.TextMeshProUGUI>().text = diceTable.GetDiceEffectByNumber(2).name;
+            dice3Score.GetComponent<TMPro.TextMeshProUGUI>().text = diceTable.GetDiceEffectByNumber(3).name;
+            dice4Score.GetComponent<TMPro.TextMeshProUGUI>().text = diceTable.GetDiceEffectByNumber(4).name;
+            dice5Score.GetComponent<TMPro.TextMeshProUGUI>().text = diceTable.GetDiceEffectByNumber(5).name;
+            dice6Score.GetComponent<TMPro.TextMeshProUGUI>().text = diceTable.GetDiceEffectByNumber(6).name;
+
+            dice1Image.sprite = diceTable.GetDiceEffectByNumber(1).diceFaces[0];
+            dice2Image.sprite = diceTable.GetDiceEffectByNumber(2).diceFaces[1];
+            dice3Image.sprite = diceTable.GetDiceEffectByNumber(3).diceFaces[2];
+            dice4Image.sprite = diceTable.GetDiceEffectByNumber(4).diceFaces[3];
+            dice5Image.sprite = diceTable.GetDiceEffectByNumber(5).diceFaces[4];
+            dice6Image.sprite = diceTable.GetDiceEffectByNumber(6).diceFaces[5];
 
             int totalDiceCount = 1 * num1Dice + 2 * num2Dice + 3 * num3Dice + 4 * num4Dice + 5 * num5Dice + 6 * num6Dice;
             diceCount.GetComponent<TMPro.TextMeshProUGUI>().text = totalDiceCount.ToString();

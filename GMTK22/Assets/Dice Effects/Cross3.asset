@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fdf9ede3f50b0a46b5966ffaafaffc9, type: 3}
+  m_Name: Cross3
+  m_EditorClassIdentifier: 
+  name: Cross x3
+  diceFaces:
+  - {fileID: 463451740, guid: 913a8425ad50a3a448351f1813b1b640, type: 3}
+  - {fileID: 2037849742, guid: 913a8425ad50a3a448351f1813b1b640, type: 3}
+  - {fileID: 19943459, guid: 913a8425ad50a3a448351f1813b1b640, type: 3}
+  - {fileID: -365193490, guid: 913a8425ad50a3a448351f1813b1b640, type: 3}
+  - {fileID: 1603104086, guid: 913a8425ad50a3a448351f1813b1b640, type: 3}
+  - {fileID: -223807875, guid: 913a8425ad50a3a448351f1813b1b640, type: 3}
+  adjacentNorth: 3
+  adjacentNorthEast: 0
+  adjacentEast: 3
+  adjacentSouthEast: 0
+  adjacentSouth: 3
+  adjacentSouthWest: 0
+  adjacentWest: 3
+  adjacentNorthWest: 0

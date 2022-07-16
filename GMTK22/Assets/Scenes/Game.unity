@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 115203882}
   - component: {fileID: 115203881}
   m_Layer: 5
-  m_Name: Dice Image
+  m_Name: 2 Dice Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.43654326, g: 0.8490566, b: 0.8052469, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 259594596}
   - component: {fileID: 259594595}
   m_Layer: 5
-  m_Name: Dice Image
+  m_Name: 6 Dice Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.43654326, g: 0.8490566, b: 0.8052469, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 417146928}
   - component: {fileID: 417146927}
   m_Layer: 5
-  m_Name: Dice Count
+  m_Name: 1 Dice Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -348,7 +348,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -30.7, y: 28.6}
+  m_AnchoredPosition: {x: -30.7, y: 26}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &417146927
@@ -398,8 +398,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -505,71 +505,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49bcd1c5b485884aa1bc67a7f5c92c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceFaces:
-  - {fileID: -418461655, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: -711919968, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 1479074170, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: -1628186936, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   highlightMaterial: {fileID: 0}
   diceRollTime: 0
   diceSwitchDelay: 0
   diceRollScale: 0
-  diceEffect1:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect2:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect3:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect4:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect5:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect6:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
+  diceEffect: {fileID: 0}
   rolling: 0
   horMatched: 0
   vertMatched: 0
@@ -841,71 +781,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49bcd1c5b485884aa1bc67a7f5c92c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceFaces:
-  - {fileID: -418461655, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: -711919968, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 1479074170, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: -1628186936, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   highlightMaterial: {fileID: 0}
   diceRollTime: 0
   diceSwitchDelay: 0
   diceRollScale: 0
-  diceEffect1:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect2:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect3:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect4:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect5:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect6:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
+  diceEffect: {fileID: 0}
   rolling: 0
   horMatched: 0
   vertMatched: 0
@@ -1240,7 +1120,7 @@ GameObject:
   - component: {fileID: 793700266}
   - component: {fileID: 793700265}
   m_Layer: 5
-  m_Name: Dice Count
+  m_Name: 5 Dice Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1263,7 +1143,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -30.7, y: 28.6}
+  m_AnchoredPosition: {x: -30.7, y: 25.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &793700265
@@ -1313,8 +1193,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1420,71 +1300,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49bcd1c5b485884aa1bc67a7f5c92c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceFaces:
-  - {fileID: -418461655, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: -711919968, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 1479074170, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: -1628186936, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   highlightMaterial: {fileID: 0}
   diceRollTime: 0
   diceSwitchDelay: 0
   diceRollScale: 0
-  diceEffect1:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect2:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect3:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect4:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect5:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect6:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
+  diceEffect: {fileID: 0}
   rolling: 0
   horMatched: 0
   vertMatched: 0
@@ -1592,7 +1412,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -31.099998}
+  m_AnchoredPosition: {x: 109.5, y: 70.4}
   m_SizeDelta: {x: 100.131, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1006564843
@@ -1704,7 +1524,7 @@ GameObject:
   - component: {fileID: 1067470420}
   - component: {fileID: 1067470419}
   m_Layer: 5
-  m_Name: Dice Image
+  m_Name: 4 Dice Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1743,7 +1563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.43654326, g: 0.8490566, b: 0.8052469, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1898,12 +1718,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diceTable: {fileID: 1232805111}
   diceCount: {fileID: 1006564841}
-  dice1Score: {fileID: 2010133075}
-  dice2Score: {fileID: 1430554369}
+  dice1Score: {fileID: 417146925}
+  dice2Score: {fileID: 2010133075}
   dice3Score: {fileID: 1430554369}
   dice4Score: {fileID: 1728839368}
   dice5Score: {fileID: 793700263}
   dice6Score: {fileID: 1802797100}
+  dice1Image: {fileID: 1268106290}
+  dice2Image: {fileID: 115203881}
+  dice3Image: {fileID: 1828835041}
+  dice4Image: {fileID: 1067470419}
+  dice5Image: {fileID: 1618241412}
+  dice6Image: {fileID: 259594595}
 --- !u!1 &1268106288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1916,7 +1742,7 @@ GameObject:
   - component: {fileID: 1268106291}
   - component: {fileID: 1268106290}
   m_Layer: 5
-  m_Name: Dice Image
+  m_Name: 1 Dice Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1955,7 +1781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.43654326, g: 0.8490566, b: 0.8052469, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2037,71 +1863,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49bcd1c5b485884aa1bc67a7f5c92c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceFaces:
-  - {fileID: -418461655, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: -711919968, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 1479074170, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: -1628186936, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   highlightMaterial: {fileID: 0}
   diceRollTime: 0
   diceSwitchDelay: 0
   diceRollScale: 0
-  diceEffect1:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect2:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect3:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect4:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect5:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect6:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
+  diceEffect: {fileID: 0}
   rolling: 0
   horMatched: 0
   vertMatched: 0
@@ -2231,71 +1997,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49bcd1c5b485884aa1bc67a7f5c92c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceFaces:
-  - {fileID: -418461655, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: -711919968, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 1479074170, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: -1628186936, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   highlightMaterial: {fileID: 0}
   diceRollTime: 0
   diceSwitchDelay: 0
   diceRollScale: 0
-  diceEffect1:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect2:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect3:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect4:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect5:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect6:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
+  diceEffect: {fileID: 0}
   rolling: 0
   horMatched: 0
   vertMatched: 0
@@ -2380,8 +2086,16 @@ PrefabInstance:
       value: Dice Table
       objectReference: {fileID: 0}
     - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: dicePerRow
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
       propertyPath: matchLength
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: dicePerColumn
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
       propertyPath: effectedDiceRollDelay
@@ -2521,7 +2235,7 @@ GameObject:
   - component: {fileID: 1430554372}
   - component: {fileID: 1430554371}
   m_Layer: 5
-  m_Name: Dice Count
+  m_Name: 3 Dice Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2544,7 +2258,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -30.7, y: 28.6}
+  m_AnchoredPosition: {x: -30.7, y: 24.9}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1430554371
@@ -2594,8 +2308,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2644,6 +2358,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430554369}
   m_CullTransparentMesh: 1
+--- !u!1 &1542531415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1542531417}
+  - component: {fileID: 1542531416}
+  m_Layer: 0
+  m_Name: Dice Effect Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1542531416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542531415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc941f12ae76f24bb3df261c2f3c7c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects:
+  - {fileID: 11400000, guid: c95dce8234e67324b813b1d01b01cc60, type: 2}
+  - {fileID: 11400000, guid: c245f4d1183638d4aa5f7598b8c66d09, type: 2}
+  - {fileID: 11400000, guid: 77a49a980c5108f4ebd9db2eb428c742, type: 2}
+  - {fileID: 11400000, guid: 6340f92197dcac64f8e4a8af749d939b, type: 2}
+  - {fileID: 11400000, guid: cccea97f0b81ae6408f88dd8441ee051, type: 2}
+  - {fileID: 11400000, guid: cfc0675190d4ba848bbd308273c2e2c8, type: 2}
+  - {fileID: 11400000, guid: 0c704bbfdb85e3c418ada565a82c8c55, type: 2}
+  - {fileID: 11400000, guid: 8bcabb21499211745bc4d2df279db049, type: 2}
+  - {fileID: 11400000, guid: f9a3ccf3e28994b4aa30c6fa40703ad0, type: 2}
+  - {fileID: 11400000, guid: 51b992a8d2fe7334dafe175035f9cea4, type: 2}
+  - {fileID: 11400000, guid: 8f025865bb9b5494e8a6b194fdc9d0c8, type: 2}
+--- !u!4 &1542531417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542531415}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.9473643, y: 2.050585, z: 11.537172}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1585852313
 GameObject:
   m_ObjectHideFlags: 0
@@ -2701,71 +2471,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49bcd1c5b485884aa1bc67a7f5c92c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceFaces:
-  - {fileID: -418461655, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: -711919968, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 1479074170, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: -1628186936, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   highlightMaterial: {fileID: 0}
   diceRollTime: 0
   diceSwitchDelay: 0
   diceRollScale: 0
-  diceEffect1:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect2:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect3:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect4:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect5:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect6:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
+  diceEffect: {fileID: 0}
   rolling: 0
   horMatched: 0
   vertMatched: 0
@@ -2850,7 +2560,7 @@ GameObject:
   - component: {fileID: 1618241413}
   - component: {fileID: 1618241412}
   m_Layer: 5
-  m_Name: Dice Image
+  m_Name: 5 Dice Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2889,7 +2599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.43654326, g: 0.8490566, b: 0.8052469, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2971,71 +2681,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49bcd1c5b485884aa1bc67a7f5c92c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceFaces:
-  - {fileID: -418461655, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: -711919968, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 1479074170, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: -1628186936, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   highlightMaterial: {fileID: 0}
   diceRollTime: 0
   diceSwitchDelay: 0
   diceRollScale: 0
-  diceEffect1:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect2:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect3:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect4:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect5:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect6:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
+  diceEffect: {fileID: 0}
   rolling: 0
   horMatched: 0
   vertMatched: 0
@@ -3158,7 +2808,7 @@ GameObject:
   - component: {fileID: 1728839371}
   - component: {fileID: 1728839370}
   m_Layer: 5
-  m_Name: Dice Count
+  m_Name: 4 Dice Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3181,7 +2831,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -30.7, y: 28.6}
+  m_AnchoredPosition: {x: -30.7, y: 25.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1728839370
@@ -3231,8 +2881,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3293,7 +2943,7 @@ GameObject:
   - component: {fileID: 1802797103}
   - component: {fileID: 1802797102}
   m_Layer: 5
-  m_Name: Dice Count
+  m_Name: 6 Dice Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3316,7 +2966,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -30.7, y: 28.6}
+  m_AnchoredPosition: {x: -30.7, y: 25.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1802797102
@@ -3366,8 +3016,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3428,7 +3078,7 @@ GameObject:
   - component: {fileID: 1828835042}
   - component: {fileID: 1828835041}
   m_Layer: 5
-  m_Name: Dice Image
+  m_Name: 3 Dice Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3467,7 +3117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.43654326, g: 0.8490566, b: 0.8052469, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3549,71 +3199,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49bcd1c5b485884aa1bc67a7f5c92c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceFaces:
-  - {fileID: -418461655, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: -711919968, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 1479074170, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: -1628186936, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
-  - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   highlightMaterial: {fileID: 0}
   diceRollTime: 0
   diceSwitchDelay: 0
   diceRollScale: 0
-  diceEffect1:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect2:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect3:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect4:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect5:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect6:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
+  diceEffect: {fileID: 0}
   rolling: 0
   horMatched: 0
   vertMatched: 0
@@ -3698,7 +3288,7 @@ GameObject:
   - component: {fileID: 2010133078}
   - component: {fileID: 2010133077}
   m_Layer: 5
-  m_Name: Dice Count
+  m_Name: 2 Dice Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3721,7 +3311,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -30.7, y: 28.6}
+  m_AnchoredPosition: {x: -30.7, y: 25.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2010133077
@@ -3771,8 +3361,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3947,8 +3537,8 @@ SpriteRenderer:
   m_SortingLayerID: -2045647121
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.509434, g: 0.37172145, b: 0.29076186, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 137454c737eb4d84fa5112d12b64a0d4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3966,8 +3556,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080842045}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4107, y: 0.3082, z: 0}
-  m_LocalScale: {x: 25.662382, y: 14.678522, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4018,18 +3608,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 234826615221663032, guid: 9c4a2a40d2ca59446bb391225c42e796, type: 3}
-      propertyPath: diceRollTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 234826615221663032, guid: 9c4a2a40d2ca59446bb391225c42e796, type: 3}
-      propertyPath: diceRollScale
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 234826615221663032, guid: 9c4a2a40d2ca59446bb391225c42e796, type: 3}
-      propertyPath: diceSwitchDelay
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 234826615221663033, guid: 9c4a2a40d2ca59446bb391225c42e796, type: 3}
       propertyPath: m_Name
       value: Dice
