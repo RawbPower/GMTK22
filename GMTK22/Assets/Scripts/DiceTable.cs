@@ -13,6 +13,7 @@ public class DiceTable : MonoBehaviour
     public int dicePerRow;
     public int dicePerColumn;
     public float diceSpacing;
+    public int matchLength = 3;
     public GameObject dicePrefab;
 
     private DiceSlot[,] diceGrid;
@@ -80,6 +81,8 @@ public class DiceTable : MonoBehaviour
                 }
             }
         }
+
+        DetectMatches();
     }
 
     void CreateDice()
@@ -100,6 +103,138 @@ public class DiceTable : MonoBehaviour
                 GameObject diceObject = Instantiate(dicePrefab, dicePos, Quaternion.identity);
                 diceGrid[i, j].dice = diceObject.GetComponent<Dice>();
                 diceGrid[i, j].position = dicePos;
+            }
+        }
+    }
+
+    private void DetectMatches()
+    {
+        for (int x = 0; x < dicePerRow; x++)
+        {
+            for (int y = 0; y < dicePerColumn; y++)
+            {
+                Dice dice = diceGrid[x, y].dice;
+                int matchNumber = dice.GetNumber();
+
+                // Find Horizontal Matches
+                if (x + matchLength - 1 < dicePerRow && !dice.horMatched)
+                {
+                    bool foundMatch = true;
+                    for (int i = 1; i < matchLength; i++)
+                    {
+                        if (diceGrid[x+i,y].dice.GetNumber() != matchNumber)
+                        {
+                            foundMatch = false;
+                            break;
+                        }
+                    }
+
+                    if (foundMatch)
+                    {
+                        Debug.Log("Horizontal Match Found: " + matchNumber);
+                        for (int i = 0; i < dicePerRow; i++)
+                        {
+                            if (i < matchLength)
+                            {
+                                diceGrid[x + i, y].dice.horMatched = true;
+                            }
+                            else if (x + i < dicePerRow && diceGrid[x + i, y].dice.GetNumber() == matchNumber)
+                            {
+                                diceGrid[x + i, y].dice.horMatched = true;
+                            }
+                        }
+                    }
+                }
+
+                // Find Vertical Matches
+                if (y + matchLength - 1 < dicePerColumn && !dice.vertMatched)
+                {
+                    bool foundMatch = true;
+                    for (int i = 1; i < matchLength; i++)
+                    {
+                        if (diceGrid[x, y + i].dice.GetNumber() != matchNumber)
+                        {
+                            foundMatch = false;
+                            break;
+                        }
+                    }
+
+                    if (foundMatch)
+                    {
+                        Debug.Log("Vertical Match Found: " + matchNumber);
+                        for (int i = 0; i < dicePerColumn; i++)
+                        {
+                            if (i < matchLength)
+                            {
+                                diceGrid[x, y + i].dice.vertMatched = true;
+                            }
+                            else if (y + i < dicePerColumn && diceGrid[x, y + i].dice.GetNumber() == matchNumber)
+                            {
+                                diceGrid[x, y + i].dice.vertMatched = true;
+                            }
+                        }
+                    }
+                }
+
+                // Find Diagonal Right Matches
+                if (y + matchLength - 1 < dicePerColumn && x + matchLength - 1 < dicePerRow && !dice.diagRMatched)
+                {
+                    bool foundMatch = true;
+                    for (int i = 1; i < matchLength; i++)
+                    {
+                        if (diceGrid[x + i, y + i].dice.GetNumber() != matchNumber)
+                        {
+                            foundMatch = false;
+                            break;
+                        }
+                    }
+
+                    if (foundMatch)
+                    {
+                        Debug.Log("Diagonal Right Match Found: " + matchNumber);
+                        for (int i = 0; i < dicePerColumn; i++)
+                        {
+                            if (i < matchLength)
+                            {
+                                diceGrid[x + i, y + i].dice.diagRMatched = true;
+                            }
+                            else if (y + i < dicePerColumn && x + i < dicePerRow && diceGrid[x + i, y + i].dice.GetNumber() == matchNumber)
+                            {
+                                diceGrid[x + i, y + i].dice.diagRMatched = true;
+                            }
+                        }
+                    }
+                }
+
+                // Find Diagonal Left Matches
+                if (y + matchLength - 1 < dicePerColumn && x - (matchLength - 1) >= 0 && !dice.diagLMatched)
+                {
+                    bool foundMatch = true;
+                    for (int i = 1; i < matchLength; i++)
+                    {
+                        if (diceGrid[x - i, y + i].dice.GetNumber() != matchNumber)
+                        {
+                            foundMatch = false;
+                            break;
+                        }
+                    }
+
+                    if (foundMatch)
+                    {
+                        Debug.Log("Diagonal Left Match Found: " + matchNumber);
+                        for (int i = 0; i < dicePerColumn; i++)
+                        {
+                            if (i < matchLength)
+                            {
+                                diceGrid[x - i, y + i].dice.diagLMatched = true;
+                            }
+                            else if (y + i < dicePerColumn && x - i >= 0 && diceGrid[x - i, y + i].dice.GetNumber() == matchNumber)
+                            {
+                                diceGrid[x - i, y + i].dice.diagLMatched = true;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

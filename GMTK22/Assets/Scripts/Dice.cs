@@ -26,6 +26,17 @@ public class Dice : MonoBehaviour
     public DiceEffect diceEffect5;
     public DiceEffect diceEffect6;
 
+    [HideInInspector]
+    public bool rolling;
+    [HideInInspector]
+    public bool horMatched;
+    [HideInInspector]
+    public bool vertMatched;
+    [HideInInspector]
+    public bool diagRMatched;
+    [HideInInspector]
+    public bool diagLMatched;
+
     private int currentSpriteFaceIndex;
     private int number;
     private SpriteRenderer spriteRenderer;
@@ -40,6 +51,11 @@ public class Dice : MonoBehaviour
         defaultMaterial = spriteRenderer.material;
         currentSpriteFaceIndex = 0;
         number = 0;
+        rolling = false;
+        horMatched = false;
+        vertMatched = false;
+        diagRMatched = false;
+        diagLMatched = false;
         RollDice();
     }
 

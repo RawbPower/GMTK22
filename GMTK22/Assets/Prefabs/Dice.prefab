@@ -116,50 +116,55 @@ MonoBehaviour:
     flipsWest: 0
     flipsNorthWest: 0
   diceEffect2:
-    flipsNorth: 1
+    flipsNorth: 0
     flipsNorthEast: 0
     flipsEast: 0
     flipsSouthEast: 0
-    flipsSouth: 1
+    flipsSouth: 0
     flipsSouthWest: 0
     flipsWest: 0
     flipsNorthWest: 0
   diceEffect3:
     flipsNorth: 0
     flipsNorthEast: 0
-    flipsEast: 1
+    flipsEast: 0
     flipsSouthEast: 0
     flipsSouth: 0
     flipsSouthWest: 0
-    flipsWest: 1
+    flipsWest: 0
     flipsNorthWest: 0
   diceEffect4:
-    flipsNorth: 1
+    flipsNorth: 0
     flipsNorthEast: 0
-    flipsEast: 1
+    flipsEast: 0
     flipsSouthEast: 0
-    flipsSouth: 1
+    flipsSouth: 0
     flipsSouthWest: 0
-    flipsWest: 1
+    flipsWest: 0
     flipsNorthWest: 0
   diceEffect5:
     flipsNorth: 0
-    flipsNorthEast: 1
-    flipsEast: 0
-    flipsSouthEast: 1
-    flipsSouth: 0
-    flipsSouthWest: 1
-    flipsWest: 0
-    flipsNorthWest: 1
-  diceEffect6:
-    flipsNorth: 2
     flipsNorthEast: 0
-    flipsEast: 2
+    flipsEast: 0
     flipsSouthEast: 0
-    flipsSouth: 2
+    flipsSouth: 0
     flipsSouthWest: 0
-    flipsWest: 2
+    flipsWest: 0
     flipsNorthWest: 0
+  diceEffect6:
+    flipsNorth: 0
+    flipsNorthEast: 0
+    flipsEast: 0
+    flipsSouthEast: 0
+    flipsSouth: 0
+    flipsSouthWest: 0
+    flipsWest: 0
+    flipsNorthWest: 0
+  rolling: 0
+  horMatched: 0
+  vertMatched: 0
+  diagRMatched: 0
+  diagLMatched: 0
 --- !u!61 &234826615221663037
 BoxCollider2D:
   m_ObjectHideFlags: 0
