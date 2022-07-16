@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 234826615221663039}
   - component: {fileID: 234826615221663032}
   - component: {fileID: 234826615221663037}
+  - component: {fileID: 8904578145440914755}
   m_Layer: 0
   m_Name: Dice
   m_TagString: Untagged
@@ -106,60 +107,68 @@ MonoBehaviour:
   - {fileID: -2064226342, guid: 5ebec2f35d80c774ea094546c34008ff, type: 3}
   - {fileID: 1497550675, guid: 5ebec2f35d80c774ea094546c34008ff, type: 3}
   highlightMaterial: {fileID: 2100000, guid: 9740eb98853418442af1357c447bc039, type: 2}
+  diceRollTime: 1
+  diceSwitchDelay: 0.1
+  diceRollScale: 0
   diceEffect1:
+    flipsNorth: 1
+    flipsNorthEast: 0
+    flipsEast: 1
+    flipsSouthEast: 0
+    flipsSouth: 1
+    flipsSouthWest: 0
+    flipsWest: 1
+    flipsNorthWest: 0
+  diceEffect2:
     flipsNorth: 0
     flipsNorthEast: 0
     flipsEast: 0
     flipsSouthEast: 0
     flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect2:
-    flipsNorth: 1
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 1
     flipsSouthWest: 0
     flipsWest: 0
     flipsNorthWest: 0
   diceEffect3:
     flipsNorth: 0
     flipsNorthEast: 0
-    flipsEast: 1
+    flipsEast: 0
     flipsSouthEast: 0
     flipsSouth: 0
     flipsSouthWest: 0
-    flipsWest: 1
+    flipsWest: 0
     flipsNorthWest: 0
   diceEffect4:
-    flipsNorth: 1
+    flipsNorth: 0
     flipsNorthEast: 0
-    flipsEast: 1
+    flipsEast: 0
     flipsSouthEast: 0
-    flipsSouth: 1
+    flipsSouth: 0
     flipsSouthWest: 0
-    flipsWest: 1
+    flipsWest: 0
     flipsNorthWest: 0
   diceEffect5:
     flipsNorth: 0
-    flipsNorthEast: 1
-    flipsEast: 0
-    flipsSouthEast: 1
-    flipsSouth: 0
-    flipsSouthWest: 1
-    flipsWest: 0
-    flipsNorthWest: 1
-  diceEffect6:
-    flipsNorth: 2
     flipsNorthEast: 0
-    flipsEast: 2
+    flipsEast: 0
     flipsSouthEast: 0
-    flipsSouth: 2
+    flipsSouth: 0
     flipsSouthWest: 0
-    flipsWest: 2
+    flipsWest: 0
     flipsNorthWest: 0
+  diceEffect6:
+    flipsNorth: 0
+    flipsNorthEast: 0
+    flipsEast: 0
+    flipsSouthEast: 0
+    flipsSouth: 0
+    flipsSouthWest: 0
+    flipsWest: 0
+    flipsNorthWest: 0
+  rolling: 0
+  horMatched: 0
+  vertMatched: 0
+  diagRMatched: 0
+  diagLMatched: 0
 --- !u!61 &234826615221663037
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -186,3 +195,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &8904578145440914755
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234826615221663033}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7c1406db4132ec441ab2c52b058f5a9f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
