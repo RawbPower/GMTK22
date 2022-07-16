@@ -50,13 +50,17 @@ public class Dice : MonoBehaviour
     void Update()
     {
         RenderDiceFace();
+        if (number != currentSpriteFaceIndex + 1 || spriteRenderer.sprite != diceEffect.diceFaces[number-1])
+        {
+            //RenderDiceFace();
+        }
     }
 
     void RenderDiceFace()
     {
         currentSpriteFaceIndex = number-1;
         spriteRenderer.sprite = diceEffect.diceFaces[currentSpriteFaceIndex];
-        spriteRenderer.material.color = diceEffect.tint;
+        //spriteRenderer.material.color = diceEffect.tint;
     }
 
     public void RollDice()

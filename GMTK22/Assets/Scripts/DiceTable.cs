@@ -45,6 +45,7 @@ public class DiceTable : MonoBehaviour
         Dice[] matchedDice = DetectMatches();
         while (matchedDice.Length > 0)
         {
+            ClearDice();
             diceGrid = new DiceSlot[dicePerRow, dicePerColumn];
             CreateDice();
             matchedDice = DetectMatches();
@@ -230,6 +231,17 @@ public class DiceTable : MonoBehaviour
                 GameObject diceObject = Instantiate(dicePrefab, dicePos, Quaternion.identity);
                 diceGrid[i, j].dice = diceObject.GetComponent<Dice>();
                 diceGrid[i, j].position = dicePos;
+            }
+        }
+    }
+
+    void ClearDice()
+    {
+        for (int i = 0; i < dicePerRow; i++)
+        {
+            for (int j = 0; j < dicePerColumn; j++)
+            {
+                Destroy(diceGrid[i, j].dice.gameObject);
             }
         }
     }

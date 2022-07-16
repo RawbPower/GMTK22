@@ -3348,16 +3348,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effects:
   - {fileID: 11400000, guid: c95dce8234e67324b813b1d01b01cc60, type: 2}
-  - {fileID: 11400000, guid: c245f4d1183638d4aa5f7598b8c66d09, type: 2}
-  - {fileID: 11400000, guid: 77a49a980c5108f4ebd9db2eb428c742, type: 2}
   - {fileID: 11400000, guid: 6340f92197dcac64f8e4a8af749d939b, type: 2}
-  - {fileID: 11400000, guid: cccea97f0b81ae6408f88dd8441ee051, type: 2}
-  - {fileID: 11400000, guid: cfc0675190d4ba848bbd308273c2e2c8, type: 2}
   - {fileID: 11400000, guid: 0c704bbfdb85e3c418ada565a82c8c55, type: 2}
   - {fileID: 11400000, guid: 8bcabb21499211745bc4d2df279db049, type: 2}
   - {fileID: 11400000, guid: f9a3ccf3e28994b4aa30c6fa40703ad0, type: 2}
-  - {fileID: 11400000, guid: 51b992a8d2fe7334dafe175035f9cea4, type: 2}
-  - {fileID: 11400000, guid: 8f025865bb9b5494e8a6b194fdc9d0c8, type: 2}
+  - {fileID: 11400000, guid: 1b5eac000e496234d8a0ae1afae58722, type: 2}
 --- !u!4 &1542531417
 Transform:
   m_ObjectHideFlags: 0
