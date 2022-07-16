@@ -19,6 +19,9 @@ public class Dice : MonoBehaviour
 {
     public Sprite[] diceFaces;
     public Material highlightMaterial;
+    public float diceRollTime;
+    public float diceSwitchDelay;
+    public float diceRollScale;
     public DiceEffect diceEffect1;
     public DiceEffect diceEffect2;
     public DiceEffect diceEffect3;
@@ -26,7 +29,6 @@ public class Dice : MonoBehaviour
     public DiceEffect diceEffect5;
     public DiceEffect diceEffect6;
 
-    [HideInInspector]
     public bool rolling;
     [HideInInspector]
     public bool horMatched;
@@ -37,10 +39,12 @@ public class Dice : MonoBehaviour
     [HideInInspector]
     public bool diagLMatched;
 
+    private float currentRollingTime;
     private int currentSpriteFaceIndex;
     private int number;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D diceCollider;
+    private Animator animator;
     private Material defaultMaterial;
 
     // Start is called before the first frame update
@@ -48,15 +52,16 @@ public class Dice : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         diceCollider = GetComponent<BoxCollider2D>();
+        animator = GetComponent<Animator>();
         defaultMaterial = spriteRenderer.material;
         currentSpriteFaceIndex = 0;
-        number = 0;
+        number = Random.Range(1, 7);
         rolling = false;
         horMatched = false;
         vertMatched = false;
         diagRMatched = false;
         diagLMatched = false;
-        RollDice();
+        //RollDice();
     }
 
     // Update is called once per frame
@@ -76,8 +81,76 @@ public class Dice : MonoBehaviour
 
     public void RollDice()
     {
-        number = Random.Range(1, 7);
-        Debug.Log("Roll Dice: " + number);
+        if (!rolling)
+        {
+            StartCoroutine(RunDiceRollingAnimation());
+            //StartCoroutine(RunDiceScalingAnimation());
+            Debug.Log("Roll Dice: " + number);
+        }
+    }
+
+    public void MatchDice()
+    {
+        StartCoroutine(PlayMatchAnimtion());
+    }
+
+    IEnumerator PlayMatchAnimtion()
+    {
+        animator.SetTrigger("Match");
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        RollDice();
+        ResetMatched();
+    }
+
+    public void ResetMatched()
+    {
+        horMatched = false;
+        vertMatched = false;
+        diagRMatched = false;
+        diagLMatched = false;
+    }
+
+    public bool IsMatched()
+    {
+        return horMatched || vertMatched || diagRMatched || diagLMatched;
+    }
+
+    IEnumerator RunDiceRollingAnimation()
+    {
+        rolling = true;
+        currentRollingTime = 0.0f;
+        while (currentRollingTime < diceRollTime)
+        {
+            int newNumber = number;
+            while (newNumber == number)
+            {
+                newNumber = Random.Range(1, 7);
+            }
+            number = newNumber;
+            yield return new WaitForSeconds(diceSwitchDelay);
+            currentRollingTime += diceSwitchDelay;
+        }
+        rolling = false;
+    }
+
+    IEnumerator RunDiceScalingAnimation()
+    {
+        while (currentRollingTime < diceRollTime)
+        {
+            if (currentRollingTime < diceRollTime * 0.5f)
+            {
+                float targetScale = 1.0f + (diceRollScale - 1.0f) * (currentRollingTime) / (diceRollTime * 0.5f);
+                gameObject.transform.localScale = new Vector3(targetScale, targetScale, 1.0f);
+                yield return new WaitForSeconds(0.01f);
+            }
+            else
+            {
+                float targetScale = 1.0f + (diceRollScale - 1.0f) * (1 - (currentRollingTime - diceRollTime * 0.5f) / (diceRollTime * 0.5f));
+                gameObject.transform.localScale = new Vector3(targetScale, targetScale, 1.0f);
+                yield return new WaitForSeconds(0.01f);
+            }
+        }
+        gameObject.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
     }
 
     public bool IsPointOnDice(Vector2 position)

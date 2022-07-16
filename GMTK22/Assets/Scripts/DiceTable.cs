@@ -15,6 +15,7 @@ public class DiceTable : MonoBehaviour
     public float diceSpacing;
     public int matchLength = 3;
     public GameObject dicePrefab;
+    public float effectedDiceRollDelay;
 
     private DiceSlot[,] diceGrid;
     private float gridHeight;
@@ -34,55 +35,75 @@ public class DiceTable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPosition.z = 0.0f;
-
-        Dice selectedDice = null;
-        Vector2Int hoverDiceIndex = new Vector2Int(0, 0);
-        for (int i = 0; i < dicePerRow; i++)
+        if (!AreAnyDiceRolling())
         {
-            for (int j = 0; j < dicePerColumn; j++)
+            if (!AreAnyDiceMatched())
             {
-                Dice dice = diceGrid[i, j].dice;
-                if (dice.IsPointOnDice(mouseWorldPosition))
+                Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mouseWorldPosition.z = 0.0f;
+
+                Dice selectedDice = null;
+                Vector2Int hoverDiceIndex = new Vector2Int(0, 0);
+                for (int i = 0; i < dicePerRow; i++)
                 {
-                    dice.HighlightDice();
-                    selectedDice = diceGrid[i, j].dice;
-                    hoverDiceIndex = new Vector2Int(i, j);
+                    for (int j = 0; j < dicePerColumn; j++)
+                    {
+                        Dice dice = diceGrid[i, j].dice;
+                        if (dice.IsPointOnDice(mouseWorldPosition))
+                        {
+                            dice.HighlightDice();
+                            selectedDice = diceGrid[i, j].dice;
+                            hoverDiceIndex = new Vector2Int(i, j);
+                        }
+                        else
+                        {
+                            dice.UnhighlightDice();
+                        }
+                    }
                 }
-                else
+
+                effectedDice = new Dice[0];
+                if (selectedDice)
                 {
-                    dice.UnhighlightDice();
+                    DiceEffect diceEffect = selectedDice.GetDiceEffect();
+                    effectedDice = GetEffectDice(hoverDiceIndex, diceEffect);
+                    foreach (Dice dice in effectedDice)
+                    {
+                        dice.HighlightDice();
+                    }
+                }
+
+                // If dice is clicked roll it
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (selectedDice)
+                    {
+                        selectedDice.RollDice();
+
+                        StartCoroutine(RollEffectedDice());
+                    }
+                }
+            }
+
+            if (!AreAnyDiceRolling())
+            {
+                Dice[] matchedDice = DetectMatches();
+
+                foreach (Dice matchedDie in matchedDice)
+                {
+                    matchedDie.MatchDice();
                 }
             }
         }
+    }
 
-        effectedDice = new Dice[0];
-        if (selectedDice)
+    IEnumerator RollEffectedDice()
+    {
+        yield return new WaitForSeconds(effectedDiceRollDelay);
+        foreach (Dice dice in effectedDice)
         {
-            DiceEffect diceEffect = selectedDice.GetDiceEffect();
-            effectedDice = GetEffectDice(hoverDiceIndex, diceEffect);
-            foreach (Dice dice in effectedDice)
-            {
-                dice.HighlightDice();
-            }
+            dice.RollDice();
         }
-
-        // If dice is clicked roll it
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (selectedDice)
-            {
-                selectedDice.RollDice();
-
-                foreach (Dice dice in effectedDice)
-                {
-                    dice.RollDice();
-                }
-            }
-        }
-
-        DetectMatches();
     }
 
     void CreateDice()
@@ -107,8 +128,45 @@ public class DiceTable : MonoBehaviour
         }
     }
 
-    private void DetectMatches()
+    public bool AreAnyDiceRolling()
     {
+        bool areAnyDiceRolling = false;
+        for (int x = 0; x < dicePerRow; x++)
+        {
+            for (int y = 0; y < dicePerColumn; y++)
+            {
+                if (diceGrid[x,y].dice.rolling)
+                {
+                    areAnyDiceRolling = true;
+                    break;
+                }
+            }
+        }
+
+        return areAnyDiceRolling;
+    }
+
+    public bool AreAnyDiceMatched()
+    {
+        bool areAnyDiceMatched = false;
+        for (int x = 0; x < dicePerRow; x++)
+        {
+            for (int y = 0; y < dicePerColumn; y++)
+            {
+                if (diceGrid[x, y].dice.IsMatched())
+                {
+                    areAnyDiceMatched = true;
+                    break;
+                }
+            }
+        }
+
+        return areAnyDiceMatched;
+    }
+
+    private Dice[] DetectMatches()
+    {
+        List<Dice> matchedDice = new List<Dice>();
         for (int x = 0; x < dicePerRow; x++)
         {
             for (int y = 0; y < dicePerColumn; y++)
@@ -136,10 +194,18 @@ public class DiceTable : MonoBehaviour
                         {
                             if (i < matchLength)
                             {
+                                if (!diceGrid[x + i, y].dice.IsMatched())
+                                {
+                                    matchedDice.Add(diceGrid[x + i, y].dice);
+                                }
                                 diceGrid[x + i, y].dice.horMatched = true;
                             }
                             else if (x + i < dicePerRow && diceGrid[x + i, y].dice.GetNumber() == matchNumber)
                             {
+                                if (!diceGrid[x + i, y].dice.IsMatched())
+                                {
+                                    matchedDice.Add(diceGrid[x + i, y].dice);
+                                }
                                 diceGrid[x + i, y].dice.horMatched = true;
                             }
                         }
@@ -166,10 +232,18 @@ public class DiceTable : MonoBehaviour
                         {
                             if (i < matchLength)
                             {
+                                if (!diceGrid[x, y + i].dice.IsMatched())
+                                {
+                                    matchedDice.Add(diceGrid[x, y + i].dice);
+                                }
                                 diceGrid[x, y + i].dice.vertMatched = true;
                             }
                             else if (y + i < dicePerColumn && diceGrid[x, y + i].dice.GetNumber() == matchNumber)
                             {
+                                if (!diceGrid[x, y + i].dice.IsMatched())
+                                {
+                                    matchedDice.Add(diceGrid[x, y + i].dice);
+                                }
                                 diceGrid[x, y + i].dice.vertMatched = true;
                             }
                         }
@@ -196,10 +270,18 @@ public class DiceTable : MonoBehaviour
                         {
                             if (i < matchLength)
                             {
+                                if (!diceGrid[x + i, y + i].dice.IsMatched())
+                                {
+                                    matchedDice.Add(diceGrid[x + i, y + i].dice);
+                                }
                                 diceGrid[x + i, y + i].dice.diagRMatched = true;
                             }
                             else if (y + i < dicePerColumn && x + i < dicePerRow && diceGrid[x + i, y + i].dice.GetNumber() == matchNumber)
                             {
+                                if (!diceGrid[x + i, y + i].dice.IsMatched())
+                                {
+                                    matchedDice.Add(diceGrid[x + i, y + i].dice);
+                                }
                                 diceGrid[x + i, y + i].dice.diagRMatched = true;
                             }
                         }
@@ -226,10 +308,18 @@ public class DiceTable : MonoBehaviour
                         {
                             if (i < matchLength)
                             {
+                                if (!diceGrid[x - i, y + i].dice.IsMatched())
+                                {
+                                    matchedDice.Add(diceGrid[x - i, y + i].dice);
+                                }
                                 diceGrid[x - i, y + i].dice.diagLMatched = true;
                             }
                             else if (y + i < dicePerColumn && x - i >= 0 && diceGrid[x - i, y + i].dice.GetNumber() == matchNumber)
                             {
+                                if (!diceGrid[x - i, y + i].dice.IsMatched())
+                                {
+                                    matchedDice.Add(diceGrid[x - i, y + i].dice);
+                                }
                                 diceGrid[x - i, y + i].dice.diagLMatched = true;
                             }
                         }
@@ -237,6 +327,8 @@ public class DiceTable : MonoBehaviour
                 }
             }
         }
+
+        return matchedDice.ToArray();
     }
 
     public int GetNumberOfDice(int number)

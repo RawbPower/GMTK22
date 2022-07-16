@@ -513,6 +513,9 @@ MonoBehaviour:
   - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   highlightMaterial: {fileID: 0}
+  diceRollTime: 0
+  diceSwitchDelay: 0
+  diceRollScale: 0
   diceEffect1:
     flipsNorth: 0
     flipsNorthEast: 0
@@ -567,6 +570,11 @@ MonoBehaviour:
     flipsSouthWest: 0
     flipsWest: 0
     flipsNorthWest: 0
+  rolling: 0
+  horMatched: 0
+  vertMatched: 0
+  diagRMatched: 0
+  diagLMatched: 0
 --- !u!212 &483180092
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -632,7 +640,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -841,6 +849,9 @@ MonoBehaviour:
   - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   highlightMaterial: {fileID: 0}
+  diceRollTime: 0
+  diceSwitchDelay: 0
+  diceRollScale: 0
   diceEffect1:
     flipsNorth: 0
     flipsNorthEast: 0
@@ -895,6 +906,11 @@ MonoBehaviour:
     flipsSouthWest: 0
     flipsWest: 0
     flipsNorthWest: 0
+  rolling: 0
+  horMatched: 0
+  vertMatched: 0
+  diagRMatched: 0
+  diagLMatched: 0
 --- !u!212 &599217290
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -960,7 +976,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619394800
 GameObject:
@@ -1167,7 +1183,7 @@ RectTransform:
   m_Children:
   - {fileID: 1251163900}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1412,6 +1428,9 @@ MonoBehaviour:
   - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   highlightMaterial: {fileID: 0}
+  diceRollTime: 0
+  diceSwitchDelay: 0
+  diceRollScale: 0
   diceEffect1:
     flipsNorth: 0
     flipsNorthEast: 0
@@ -1466,6 +1485,11 @@ MonoBehaviour:
     flipsSouthWest: 0
     flipsWest: 0
     flipsNorthWest: 0
+  rolling: 0
+  horMatched: 0
+  vertMatched: 0
+  diagRMatched: 0
+  diagLMatched: 0
 --- !u!212 &892212829
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1531,7 +1555,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1006564841
 GameObject:
@@ -1805,6 +1829,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c020ba6b58b898f4e86943dc3675414c, type: 3}
+--- !u!114 &1232805111 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+  m_PrefabInstance: {fileID: 1330430784}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2d4212404907d9448c04b647b4ea91d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1251163899
 GameObject:
   m_ObjectHideFlags: 0
@@ -1861,7 +1896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033e41c473bdc8a43ab2038fde2535ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceTable: {fileID: 1800505643}
+  diceTable: {fileID: 1232805111}
   diceCount: {fileID: 1006564841}
   dice1Score: {fileID: 2010133075}
   dice2Score: {fileID: 1430554369}
@@ -2010,6 +2045,9 @@ MonoBehaviour:
   - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   highlightMaterial: {fileID: 0}
+  diceRollTime: 0
+  diceSwitchDelay: 0
+  diceRollScale: 0
   diceEffect1:
     flipsNorth: 0
     flipsNorthEast: 0
@@ -2064,6 +2102,11 @@ MonoBehaviour:
     flipsSouthWest: 0
     flipsWest: 0
     flipsNorthWest: 0
+  rolling: 0
+  horMatched: 0
+  vertMatched: 0
+  diagRMatched: 0
+  diagLMatched: 0
 --- !u!212 &1277313152
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2129,7 +2172,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1290425480
 GameObject:
@@ -2196,6 +2239,9 @@ MonoBehaviour:
   - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   highlightMaterial: {fileID: 0}
+  diceRollTime: 0
+  diceSwitchDelay: 0
+  diceRollScale: 0
   diceEffect1:
     flipsNorth: 0
     flipsNorthEast: 0
@@ -2250,6 +2296,11 @@ MonoBehaviour:
     flipsSouthWest: 0
     flipsWest: 0
     flipsNorthWest: 0
+  rolling: 0
+  horMatched: 0
+  vertMatched: 0
+  diagRMatched: 0
+  diagLMatched: 0
 --- !u!212 &1290425483
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2315,8 +2366,73 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1330430784
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6669109274011482402, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: m_Name
+      value: Dice Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: matchLength
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: effectedDiceRollDelay
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
 --- !u!1 &1357826024
 GameObject:
   m_ObjectHideFlags: 0
@@ -2593,6 +2709,9 @@ MonoBehaviour:
   - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   highlightMaterial: {fileID: 0}
+  diceRollTime: 0
+  diceSwitchDelay: 0
+  diceRollScale: 0
   diceEffect1:
     flipsNorth: 0
     flipsNorthEast: 0
@@ -2647,6 +2766,11 @@ MonoBehaviour:
     flipsSouthWest: 0
     flipsWest: 0
     flipsNorthWest: 0
+  rolling: 0
+  horMatched: 0
+  vertMatched: 0
+  diagRMatched: 0
+  diagLMatched: 0
 --- !u!212 &1585852316
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2712,7 +2836,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1618241410
 GameObject:
@@ -2855,6 +2979,9 @@ MonoBehaviour:
   - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   highlightMaterial: {fileID: 0}
+  diceRollTime: 0
+  diceSwitchDelay: 0
+  diceRollScale: 0
   diceEffect1:
     flipsNorth: 0
     flipsNorthEast: 0
@@ -2909,6 +3036,11 @@ MonoBehaviour:
     flipsSouthWest: 0
     flipsWest: 0
     flipsNorthWest: 0
+  rolling: 0
+  horMatched: 0
+  vertMatched: 0
+  diagRMatched: 0
+  diagLMatched: 0
 --- !u!212 &1697030929
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2974,7 +3106,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1699319317
 GameObject:
@@ -3149,17 +3281,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1728839368}
   m_CullTransparentMesh: 1
---- !u!114 &1800505643 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-  m_PrefabInstance: {fileID: 6669109273360216072}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2d4212404907d9448c04b647b4ea91d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1802797100
 GameObject:
   m_ObjectHideFlags: 0
@@ -3436,6 +3557,9 @@ MonoBehaviour:
   - {fileID: 1092672362, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   - {fileID: 309313872, guid: 951248eda0179eb4ea9fa881b8d12aba, type: 3}
   highlightMaterial: {fileID: 0}
+  diceRollTime: 0
+  diceSwitchDelay: 0
+  diceRollScale: 0
   diceEffect1:
     flipsNorth: 0
     flipsNorthEast: 0
@@ -3490,6 +3614,11 @@ MonoBehaviour:
     flipsSouthWest: 0
     flipsWest: 0
     flipsNorthWest: 0
+  rolling: 0
+  horMatched: 0
+  vertMatched: 0
+  diagRMatched: 0
+  diagLMatched: 0
 --- !u!212 &1832930898
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3555,7 +3684,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2010133075
 GameObject:
@@ -3758,7 +3887,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2080842045
 GameObject:
@@ -3889,6 +4018,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 234826615221663032, guid: 9c4a2a40d2ca59446bb391225c42e796, type: 3}
+      propertyPath: diceRollTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 234826615221663032, guid: 9c4a2a40d2ca59446bb391225c42e796, type: 3}
+      propertyPath: diceRollScale
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 234826615221663032, guid: 9c4a2a40d2ca59446bb391225c42e796, type: 3}
+      propertyPath: diceSwitchDelay
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 234826615221663033, guid: 9c4a2a40d2ca59446bb391225c42e796, type: 3}
       propertyPath: m_Name
       value: Dice
@@ -3899,7 +4040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 234826615221663038, guid: 9c4a2a40d2ca59446bb391225c42e796, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 234826615221663038, guid: 9c4a2a40d2ca59446bb391225c42e796, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3943,68 +4084,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c4a2a40d2ca59446bb391225c42e796, type: 3}
---- !u!1001 &6669109273360216072
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6669109274011482402, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: m_Name
-      value: Dice Table
-      objectReference: {fileID: 0}
-    - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: dicePerRow
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: dicePerColumn
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.2746335
-      objectReference: {fileID: 0}
-    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.17366698
-      objectReference: {fileID: 0}
-    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.1240483
-      objectReference: {fileID: 0}
-    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
