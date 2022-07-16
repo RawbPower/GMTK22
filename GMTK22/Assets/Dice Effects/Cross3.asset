@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdf9ede3f50b0a46b5966ffaafaffc9, type: 3}
   m_Name: Cross3
   m_EditorClassIdentifier: 
-  effectName: Cross x3
+  effectName: Cross
   diceFaces:
   - {fileID: 463451740, guid: 913a8425ad50a3a448351f1813b1b640, type: 3}
   - {fileID: 2037849742, guid: 913a8425ad50a3a448351f1813b1b640, type: 3}

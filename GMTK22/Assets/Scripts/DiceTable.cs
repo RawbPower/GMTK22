@@ -18,7 +18,10 @@ public class DiceTable : MonoBehaviour
     public float affectedDiceRollDelay;
     public Timer timer;
     public GameObject endGameOverlay;
+    public GameObject scoreUI;
 
+    private int score;
+    private float comboMult;
     private DiceSlot[,] diceGrid;
     private float gridHeight;
     private float gridWidth;
@@ -51,6 +54,9 @@ public class DiceTable : MonoBehaviour
             matchedDice = DetectMatches();
         }
 
+        score = 0;
+        scoreUI.GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + score.ToString();
+
         for (int i = 0; i < dicePerRow; i++)
         {
             for (int j = 0; j < dicePerColumn; j++)
@@ -80,6 +86,7 @@ public class DiceTable : MonoBehaviour
     {
         gameOver = true;
         endGameOverlay.SetActive(true);
+        endGameOverlay.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Score: " + score.ToString();
     }
 
     // Update is called once per frame
@@ -100,15 +107,9 @@ public class DiceTable : MonoBehaviour
                         {
                             randomDiceEffect = diceEffectPool.GetRandomDiceEffect();
                             uniqueDiceEffect = IsValidRandomDiceEffect(randomDiceEffect);
-                            foreach (DiceEffect effect in diceEffectsByNumber)
-                            {
-                                if (effect == randomDiceEffect)
-                                {
-                                    uniqueDiceEffect = false;
-                                }
-                            }
                         }
                         newDiceEffects[number-1] = randomDiceEffect;
+                        diceEffectsByNumber[number - 1] = randomDiceEffect;
                     }
                 }
 
@@ -119,8 +120,8 @@ public class DiceTable : MonoBehaviour
                         Dice dice = diceGrid[i, j].dice;
                         if (dice.GetNumber() == affectedNumbers[dice.GetNumber() - 1])
                         {
-                            dice.diceEffect = newDiceEffects[dice.GetNumber() - 1];
-                            diceEffectsByNumber[dice.GetNumber() - 1] = newDiceEffects[dice.GetNumber() - 1];
+                            dice.diceEffect = diceEffectsByNumber[dice.GetNumber() - 1];
+                            //diceEffectsByNumber[dice.GetNumber() - 1] = newDiceEffects[dice.GetNumber() - 1];
                         }
 
                         if (dice.diceEffect != diceEffectsByNumber[dice.GetNumber() - 1])
@@ -284,6 +285,7 @@ public class DiceTable : MonoBehaviour
 
     private Dice[] DetectMatches()
     {
+        int matchesFound = 0;
         List<Dice> matchedDice = new List<Dice>();
         for (int x = 0; x < dicePerRow; x++)
         {
@@ -307,6 +309,8 @@ public class DiceTable : MonoBehaviour
 
                     if (foundMatch)
                     {
+                        matchesFound++;
+                        int baseScore = 300;
                         Debug.Log("Horizontal Match Found: " + matchNumber);
                         for (int i = 0; i < dicePerRow; i++)
                         {
@@ -325,12 +329,14 @@ public class DiceTable : MonoBehaviour
                                     matchedDice.Add(diceGrid[x + i, y].dice);
                                 }
                                 diceGrid[x + i, y].dice.horMatched = true;
+                                baseScore = 500;
                             }
                             else
                             {
                                 break;
                             }
                         }
+                        score += baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f);
                     }
                 }
 
@@ -349,6 +355,8 @@ public class DiceTable : MonoBehaviour
 
                     if (foundMatch)
                     {
+                        matchesFound++;
+                        int baseScore = 300;
                         Debug.Log("Vertical Match Found: " + matchNumber);
                         for (int i = 0; i < dicePerColumn; i++)
                         {
@@ -367,12 +375,14 @@ public class DiceTable : MonoBehaviour
                                     matchedDice.Add(diceGrid[x, y + i].dice);
                                 }
                                 diceGrid[x, y + i].dice.vertMatched = true;
+                                baseScore = 500;
                             }
                             else
                             {
                                 break;
                             }
                         }
+                        score += baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f);
                     }
                 }
 
@@ -391,6 +401,8 @@ public class DiceTable : MonoBehaviour
 
                     if (foundMatch)
                     {
+                        matchesFound++;
+                        int baseScore = 300;
                         Debug.Log("Diagonal Right Match Found: " + matchNumber);
                         for (int i = 0; i < dicePerColumn; i++)
                         {
@@ -409,12 +421,14 @@ public class DiceTable : MonoBehaviour
                                     matchedDice.Add(diceGrid[x + i, y + i].dice);
                                 }
                                 diceGrid[x + i, y + i].dice.diagRMatched = true;
+                                baseScore = 500;
                             }
                             else
                             {
                                 break;
                             }
                         }
+                        score += baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f);
                     }
                 }
 
@@ -433,6 +447,8 @@ public class DiceTable : MonoBehaviour
 
                     if (foundMatch)
                     {
+                        matchesFound++;
+                        int baseScore = 300;
                         Debug.Log("Diagonal Left Match Found: " + matchNumber);
                         for (int i = 0; i < dicePerColumn; i++)
                         {
@@ -451,15 +467,22 @@ public class DiceTable : MonoBehaviour
                                     matchedDice.Add(diceGrid[x - i, y + i].dice);
                                 }
                                 diceGrid[x - i, y + i].dice.diagLMatched = true;
+                                baseScore = 500;
                             }
                             else
                             {
                                 break;
                             }
                         }
+                        score += baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f);
                     }
                 }
             }
+        }
+
+        if (matchesFound > 0)
+        {
+            scoreUI.GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + score.ToString();
         }
 
         return matchedDice.ToArray();

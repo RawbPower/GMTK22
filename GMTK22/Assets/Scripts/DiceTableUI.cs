@@ -39,12 +39,12 @@ public class DiceTableUI : MonoBehaviour
             int num5Dice = diceTable.GetNumberOfDice(5);
             int num6Dice = diceTable.GetNumberOfDice(6);
 
-            dice1Score.GetComponent<TMPro.TextMeshProUGUI>().text = diceTable.GetDiceEffectByNumber(1).name;
-            dice2Score.GetComponent<TMPro.TextMeshProUGUI>().text = diceTable.GetDiceEffectByNumber(2).name;
-            dice3Score.GetComponent<TMPro.TextMeshProUGUI>().text = diceTable.GetDiceEffectByNumber(3).name;
-            dice4Score.GetComponent<TMPro.TextMeshProUGUI>().text = diceTable.GetDiceEffectByNumber(4).name;
-            dice5Score.GetComponent<TMPro.TextMeshProUGUI>().text = diceTable.GetDiceEffectByNumber(5).name;
-            dice6Score.GetComponent<TMPro.TextMeshProUGUI>().text = diceTable.GetDiceEffectByNumber(6).name;
+            dice1Score.GetComponent<TMPro.TextMeshProUGUI>().text = diceTable.GetDiceEffectByNumber(1).GetName();
+            dice2Score.GetComponent<TMPro.TextMeshProUGUI>().text = diceTable.GetDiceEffectByNumber(2).GetName();
+            dice3Score.GetComponent<TMPro.TextMeshProUGUI>().text = diceTable.GetDiceEffectByNumber(3).GetName();
+            dice4Score.GetComponent<TMPro.TextMeshProUGUI>().text = diceTable.GetDiceEffectByNumber(4).GetName();
+            dice5Score.GetComponent<TMPro.TextMeshProUGUI>().text = diceTable.GetDiceEffectByNumber(5).GetName();
+            dice6Score.GetComponent<TMPro.TextMeshProUGUI>().text = diceTable.GetDiceEffectByNumber(6).GetName();
 
             dice1Image.sprite = diceTable.GetDiceEffectByNumber(1).diceFaces[0];
             dice2Image.sprite = diceTable.GetDiceEffectByNumber(2).diceFaces[1];

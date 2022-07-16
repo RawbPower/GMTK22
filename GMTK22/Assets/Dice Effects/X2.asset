@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdf9ede3f50b0a46b5966ffaafaffc9, type: 3}
   m_Name: X2
   m_EditorClassIdentifier: 
-  effectName: X x2
+  effectName: X
   diceFaces:
   - {fileID: -1061440896, guid: 8a593129c6101b64b8ae37434ffc3e17, type: 3}
   - {fileID: -1824517532, guid: 8a593129c6101b64b8ae37434ffc3e17, type: 3}

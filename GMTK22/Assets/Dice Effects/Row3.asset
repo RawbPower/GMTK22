@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdf9ede3f50b0a46b5966ffaafaffc9, type: 3}
   m_Name: Row3
   m_EditorClassIdentifier: 
-  effectName: Row x3
+  effectName: Row
   diceFaces:
   - {fileID: 929053182, guid: c3641ed160b09ca4f8270b43a1a7b874, type: 3}
   - {fileID: -59033222, guid: c3641ed160b09ca4f8270b43a1a7b874, type: 3}
