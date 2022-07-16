@@ -15,21 +15,36 @@ public class DiceTable : MonoBehaviour
     public float diceSpacing;
     public int matchLength = 3;
     public GameObject dicePrefab;
-    public float effectedDiceRollDelay;
+    public float affectedDiceRollDelay;
 
     private DiceSlot[,] diceGrid;
     private float gridHeight;
     private float gridWidth;
     private float diceWidth;
     private float diceHeight;
-    private Dice[] effectedDice;
+    private Dice[] affectedDice;
+    private int[] affectedNumbers;
+    private DiceEffect[] diceEffectsByNumber;
+    private DiceEffectPool diceEffectPool;
 
     // Start is called before the first frame update
     void Start()
     {
         diceGrid = new DiceSlot[dicePerRow, dicePerColumn];
+        affectedNumbers = new int[] { 0, 0, 0, 0, 0, 0 };
+        diceEffectPool = FindObjectOfType<DiceEffectPool>();
+        diceEffectsByNumber = new DiceEffect[6];
 
         CreateDice();
+
+        for (int i = 0; i < dicePerRow; i++)
+        {
+            for (int j = 0; j < dicePerColumn; j++)
+            {
+                Dice dice = diceGrid[i, j].dice;
+                diceEffectsByNumber[dice.GetNumber() - 1] = dice.diceEffect;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -39,11 +54,40 @@ public class DiceTable : MonoBehaviour
         {
             if (!AreAnyDiceMatched())
             {
+                DiceEffect[] newDiceEffects = new DiceEffect[6];
+                foreach (int number in affectedNumbers)
+                {
+                    if (number > 0 && newDiceEffects[number - 1] == null)
+                    {
+                        newDiceEffects[number-1] = diceEffectPool.GetRandomDiceEffect();
+                    }
+                }
+
+                for (int i = 0; i < dicePerRow; i++)
+                {
+                    for (int j = 0; j < dicePerColumn; j++)
+                    {
+                        Dice dice = diceGrid[i, j].dice;
+                        if (dice.GetNumber() == affectedNumbers[dice.GetNumber() - 1])
+                        {
+                            dice.diceEffect = newDiceEffects[dice.GetNumber() - 1];
+                            diceEffectsByNumber[dice.GetNumber() - 1] = newDiceEffects[dice.GetNumber() - 1];
+                        }
+
+                        if (dice.diceEffect != diceEffectsByNumber[dice.GetNumber() - 1])
+                        {
+                            dice.diceEffect = diceEffectsByNumber[dice.GetNumber() - 1];
+                        }
+                    }
+                }
+
+                affectedNumbers = new int[] { 0, 0, 0, 0, 0, 0 };
+
                 Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 mouseWorldPosition.z = 0.0f;
 
                 Dice selectedDice = null;
-                Vector2Int hoverDiceIndex = new Vector2Int(0, 0);
+                Vector2Int selectedDiceIndex = new Vector2Int(0, 0);
                 for (int i = 0; i < dicePerRow; i++)
                 {
                     for (int j = 0; j < dicePerColumn; j++)
@@ -53,7 +97,7 @@ public class DiceTable : MonoBehaviour
                         {
                             dice.HighlightDice();
                             selectedDice = diceGrid[i, j].dice;
-                            hoverDiceIndex = new Vector2Int(i, j);
+                            selectedDiceIndex = new Vector2Int(i, j);
                         }
                         else
                         {
@@ -62,12 +106,11 @@ public class DiceTable : MonoBehaviour
                     }
                 }
 
-                effectedDice = new Dice[0];
+                affectedDice = new Dice[0];
                 if (selectedDice)
                 {
-                    DiceEffect diceEffect = selectedDice.GetDiceEffect();
-                    effectedDice = GetEffectDice(hoverDiceIndex, diceEffect);
-                    foreach (Dice dice in effectedDice)
+                    affectedDice = GetAffectedDice(selectedDice, selectedDiceIndex);
+                    foreach (Dice dice in affectedDice)
                     {
                         dice.HighlightDice();
                     }
@@ -80,7 +123,7 @@ public class DiceTable : MonoBehaviour
                     {
                         selectedDice.RollDice();
 
-                        StartCoroutine(RollEffectedDice());
+                        StartCoroutine(RollaffectedDice());
                     }
                 }
             }
@@ -91,16 +134,17 @@ public class DiceTable : MonoBehaviour
 
                 foreach (Dice matchedDie in matchedDice)
                 {
+                    affectedNumbers[matchedDie.GetNumber() - 1] = matchedDie.GetNumber();
                     matchedDie.MatchDice();
                 }
             }
         }
     }
 
-    IEnumerator RollEffectedDice()
+    IEnumerator RollaffectedDice()
     {
-        yield return new WaitForSeconds(effectedDiceRollDelay);
-        foreach (Dice dice in effectedDice)
+        yield return new WaitForSeconds(affectedDiceRollDelay);
+        foreach (Dice dice in affectedDice)
         {
             dice.RollDice();
         }
@@ -120,7 +164,7 @@ public class DiceTable : MonoBehaviour
         {
             for (int j = 0; j < dicePerColumn; j++)
             {
-                Vector2 dicePos = topLeftPos + new Vector2(i*diceSeparation.x, j*diceSeparation.y);
+                Vector2 dicePos = topLeftPos + new Vector2(i * diceSeparation.x, j * diceSeparation.y);
                 GameObject diceObject = Instantiate(dicePrefab, dicePos, Quaternion.identity);
                 diceGrid[i, j].dice = diceObject.GetComponent<Dice>();
                 diceGrid[i, j].position = dicePos;
@@ -135,7 +179,7 @@ public class DiceTable : MonoBehaviour
         {
             for (int y = 0; y < dicePerColumn; y++)
             {
-                if (diceGrid[x,y].dice.rolling)
+                if (diceGrid[x, y].dice.rolling)
                 {
                     areAnyDiceRolling = true;
                     break;
@@ -180,7 +224,7 @@ public class DiceTable : MonoBehaviour
                     bool foundMatch = true;
                     for (int i = 1; i < matchLength; i++)
                     {
-                        if (diceGrid[x+i,y].dice.GetNumber() != matchNumber)
+                        if (diceGrid[x + i, y].dice.GetNumber() != matchNumber)
                         {
                             foundMatch = false;
                             break;
@@ -207,6 +251,10 @@ public class DiceTable : MonoBehaviour
                                     matchedDice.Add(diceGrid[x + i, y].dice);
                                 }
                                 diceGrid[x + i, y].dice.horMatched = true;
+                            }
+                            else
+                            {
+                                break;
                             }
                         }
                     }
@@ -246,6 +294,10 @@ public class DiceTable : MonoBehaviour
                                 }
                                 diceGrid[x, y + i].dice.vertMatched = true;
                             }
+                            else
+                            {
+                                break;
+                            }
                         }
                     }
                 }
@@ -283,6 +335,10 @@ public class DiceTable : MonoBehaviour
                                     matchedDice.Add(diceGrid[x + i, y + i].dice);
                                 }
                                 diceGrid[x + i, y + i].dice.diagRMatched = true;
+                            }
+                            else
+                            {
+                                break;
                             }
                         }
                     }
@@ -322,6 +378,10 @@ public class DiceTable : MonoBehaviour
                                 }
                                 diceGrid[x - i, y + i].dice.diagLMatched = true;
                             }
+                            else
+                            {
+                                break;
+                            }
                         }
                     }
                 }
@@ -339,7 +399,7 @@ public class DiceTable : MonoBehaviour
         {
             for (int j = 0; j < dicePerColumn; j++)
             {
-                if (diceGrid[i,j].dice.GetNumber() == number)
+                if (diceGrid[i, j].dice.GetNumber() == number)
                 {
                     numberOfDice++;
                 }
@@ -349,130 +409,25 @@ public class DiceTable : MonoBehaviour
         return numberOfDice;
     }
 
-    Dice[] GetEffectDice(Vector2Int diceIndex, DiceEffect diceEffect)
+    Dice[] GetAffectedDice(Dice dice, Vector2Int diceIndex)
     {
-        List<Dice> effectedDice = new List<Dice>();
+        List<Dice> affectedDice = new List<Dice>();
 
-        // North effected dice
-        for (int i = 1; i < diceEffect.flipsNorth+1; i++)
+        List<Vector2Int> affectedIndices = dice.diceEffect.GetEffectIndices(diceIndex);
+
+        foreach (Vector2Int affectedIndex in affectedIndices)
         {
-            int x = diceIndex.x;
-            int y = diceIndex.y - i;
-            if (y < 0)
+            if (affectedIndex.x >= 0 && affectedIndex.x < dicePerRow && affectedIndex.y >= 0 && affectedIndex.y < dicePerColumn)
             {
-                break;
-            }
-            else
-            {
-                effectedDice.Add(diceGrid[x, y].dice);
+                affectedDice.Add(diceGrid[affectedIndex.x, affectedIndex.y].dice);
             }
         }
 
-        // North East effected dice
-        for (int i = 1; i < diceEffect.flipsNorthEast+1; i++)
-        {
-            int x = diceIndex.x + i;
-            int y = diceIndex.y - i;
-            if (y < 0 || x > dicePerRow-1)
-            {
-                break;
-            }
-            else
-            {
-                effectedDice.Add(diceGrid[x, y].dice);
-            }
-        }
+        return affectedDice.ToArray();
+    }
 
-        // East effected dice
-        for (int i = 1; i < diceEffect.flipsEast+1; i++)
-        {
-            int x = diceIndex.x + i;
-            int y = diceIndex.y;
-            if (x > dicePerRow-1)
-            {
-                break;
-            }
-            else
-            {
-                effectedDice.Add(diceGrid[x, y].dice);
-            }
-        }
-
-        // South East effected dice
-        for (int i = 1; i < diceEffect.flipsSouthEast+1; i++)
-        {
-            int x = diceIndex.x + i;
-            int y = diceIndex.y + i;
-            if (y > dicePerColumn-1 || x > dicePerRow-1)
-            {
-                break;
-            }
-            else
-            {
-                effectedDice.Add(diceGrid[x, y].dice);
-            }
-        }
-
-        // South effected dice
-        for (int i = 1; i < diceEffect.flipsSouth+1; i++)
-        {
-            int x = diceIndex.x;
-            int y = diceIndex.y + i;
-            if (y > dicePerColumn-1)
-            {
-                break;
-            }
-            else
-            {
-                effectedDice.Add(diceGrid[x, y].dice);
-            }
-        }
-
-        // South West effected dice
-        for (int i = 1; i < diceEffect.flipsSouthWest+1; i++)
-        {
-            int x = diceIndex.x - i;
-            int y = diceIndex.y + i;
-            if (y > dicePerColumn-1 || x < 0)
-            {
-                break;
-            }
-            else
-            {
-                effectedDice.Add(diceGrid[x, y].dice);
-            }
-        }
-
-        // West effected dice
-        for (int i = 1; i < diceEffect.flipsWest+1; i++)
-        {
-            int x = diceIndex.x - i;
-            int y = diceIndex.y;
-            if (x < 0)
-            {
-                break;
-            }
-            else
-            {
-                effectedDice.Add(diceGrid[x, y].dice);
-            }
-        }
-
-        // North West effected dice
-        for (int i = 1; i < diceEffect.flipsNorthWest+1; i++)
-        {
-            int x = diceIndex.x - i;
-            int y = diceIndex.y - i;
-            if (y < 0 || x < 0)
-            {
-                break;
-            }
-            else
-            {
-                effectedDice.Add(diceGrid[x, y].dice);
-            }
-        }
-
-        return effectedDice.ToArray();
+    public DiceEffect GetDiceEffectByNumber(int number)
+    {
+        return diceEffectsByNumber[number - 1];
     }
 }

@@ -99,71 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49bcd1c5b485884aa1bc67a7f5c92c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceFaces:
-  - {fileID: -1706749369, guid: 5ebec2f35d80c774ea094546c34008ff, type: 3}
-  - {fileID: 708223836, guid: 5ebec2f35d80c774ea094546c34008ff, type: 3}
-  - {fileID: -254555669, guid: 5ebec2f35d80c774ea094546c34008ff, type: 3}
-  - {fileID: -647560969, guid: 5ebec2f35d80c774ea094546c34008ff, type: 3}
-  - {fileID: -2064226342, guid: 5ebec2f35d80c774ea094546c34008ff, type: 3}
-  - {fileID: 1497550675, guid: 5ebec2f35d80c774ea094546c34008ff, type: 3}
   highlightMaterial: {fileID: 2100000, guid: 9740eb98853418442af1357c447bc039, type: 2}
   diceRollTime: 1
   diceSwitchDelay: 0.1
-  diceRollScale: 0
-  diceEffect1:
-    flipsNorth: 1
-    flipsNorthEast: 0
-    flipsEast: 1
-    flipsSouthEast: 0
-    flipsSouth: 1
-    flipsSouthWest: 0
-    flipsWest: 1
-    flipsNorthWest: 0
-  diceEffect2:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect3:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect4:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect5:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
-  diceEffect6:
-    flipsNorth: 0
-    flipsNorthEast: 0
-    flipsEast: 0
-    flipsSouthEast: 0
-    flipsSouth: 0
-    flipsSouthWest: 0
-    flipsWest: 0
-    flipsNorthWest: 0
+  diceRollScale: 1
+  diceEffect: {fileID: 11400000, guid: 8bcabb21499211745bc4d2df279db049, type: 2}
   rolling: 0
   horMatched: 0
   vertMatched: 0
