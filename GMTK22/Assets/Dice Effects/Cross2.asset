@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdf9ede3f50b0a46b5966ffaafaffc9, type: 3}
   m_Name: Cross2
   m_EditorClassIdentifier: 
-  name: Cross x2
+  effectName: Cross x2
   diceFaces:
   - {fileID: 463451740, guid: 913a8425ad50a3a448351f1813b1b640, type: 3}
   - {fileID: 2037849742, guid: 913a8425ad50a3a448351f1813b1b640, type: 3}
@@ -20,6 +20,7 @@ MonoBehaviour:
   - {fileID: -365193490, guid: 913a8425ad50a3a448351f1813b1b640, type: 3}
   - {fileID: 1603104086, guid: 913a8425ad50a3a448351f1813b1b640, type: 3}
   - {fileID: -223807875, guid: 913a8425ad50a3a448351f1813b1b640, type: 3}
+  tint: {r: 0.8731889, g: 0.4963955, b: 0.9150943, a: 1}
   adjacentNorth: 2
   adjacentNorthEast: 0
   adjacentEast: 2

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public abstract class DiceEffect : ScriptableObject
 {
-    public string name;
+    public string effectName;
     public Sprite[] diceFaces;
+    public Color tint = Color.white;
 
     public virtual List<Vector2Int> GetEffectIndices(Vector2Int diceIndex)
     {
@@ -16,6 +17,6 @@ public abstract class DiceEffect : ScriptableObject
 
     public virtual string GetName()
     {
-        return name;
+        return effectName;
     }
 }

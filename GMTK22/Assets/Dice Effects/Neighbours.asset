@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdf9ede3f50b0a46b5966ffaafaffc9, type: 3}
   m_Name: Neighbours
   m_EditorClassIdentifier: 
-  name: Neighbours
+  effectName: Neighbours
   diceFaces:
   - {fileID: -1755307538, guid: c80cfa315bd1c744d9d57b0b30aded7d, type: 3}
   - {fileID: -708724105, guid: c80cfa315bd1c744d9d57b0b30aded7d, type: 3}
@@ -20,6 +20,7 @@ MonoBehaviour:
   - {fileID: -253791022, guid: c80cfa315bd1c744d9d57b0b30aded7d, type: 3}
   - {fileID: 1984651257, guid: c80cfa315bd1c744d9d57b0b30aded7d, type: 3}
   - {fileID: -2099724001, guid: c80cfa315bd1c744d9d57b0b30aded7d, type: 3}
+  tint: {r: 1, g: 1, b: 1, a: 1}
   adjacentNorth: 1
   adjacentNorthEast: 1
   adjacentEast: 1

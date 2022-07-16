@@ -16,6 +16,8 @@ public class DiceTable : MonoBehaviour
     public int matchLength = 3;
     public GameObject dicePrefab;
     public float affectedDiceRollDelay;
+    public Timer timer;
+    public GameObject endGameOverlay;
 
     private DiceSlot[,] diceGrid;
     private float gridHeight;
@@ -26,6 +28,7 @@ public class DiceTable : MonoBehaviour
     private int[] affectedNumbers;
     private DiceEffect[] diceEffectsByNumber;
     private DiceEffectPool diceEffectPool;
+    private bool gameOver;
 
     // Start is called before the first frame update
     void Start()
@@ -34,8 +37,18 @@ public class DiceTable : MonoBehaviour
         affectedNumbers = new int[] { 0, 0, 0, 0, 0, 0 };
         diceEffectPool = FindObjectOfType<DiceEffectPool>();
         diceEffectsByNumber = new DiceEffect[6];
+        gameOver = false;
+        endGameOverlay.SetActive(false);
 
         CreateDice();
+
+        Dice[] matchedDice = DetectMatches();
+        while (matchedDice.Length > 0)
+        {
+            diceGrid = new DiceSlot[dicePerRow, dicePerColumn];
+            CreateDice();
+            matchedDice = DetectMatches();
+        }
 
         for (int i = 0; i < dicePerRow; i++)
         {
@@ -45,12 +58,33 @@ public class DiceTable : MonoBehaviour
                 diceEffectsByNumber[dice.GetNumber() - 1] = dice.diceEffect;
             }
         }
+
+        if (timer)
+        {
+            timer.StartTimer();
+        }
+    }
+
+    private void OnEnable()
+    {
+        Timer.OnTimerEnd += GameOver;
+    }
+
+    private void OnDisable()
+    {
+        Timer.OnTimerEnd -= GameOver;
+    }
+
+    void GameOver()
+    {
+        gameOver = true;
+        endGameOverlay.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!AreAnyDiceRolling())
+        if (!AreAnyDiceRolling() && !gameOver)
         {
             if (!AreAnyDiceMatched())
             {
@@ -59,7 +93,21 @@ public class DiceTable : MonoBehaviour
                 {
                     if (number > 0 && newDiceEffects[number - 1] == null)
                     {
-                        newDiceEffects[number-1] = diceEffectPool.GetRandomDiceEffect();
+                        bool uniqueDiceEffect = false;
+                        DiceEffect randomDiceEffect = null;
+                        while (!uniqueDiceEffect)
+                        {
+                            randomDiceEffect = diceEffectPool.GetRandomDiceEffect();
+                            uniqueDiceEffect = IsValidRandomDiceEffect(randomDiceEffect);
+                            foreach (DiceEffect effect in diceEffectsByNumber)
+                            {
+                                if (effect == randomDiceEffect)
+                                {
+                                    uniqueDiceEffect = false;
+                                }
+                            }
+                        }
+                        newDiceEffects[number-1] = randomDiceEffect;
                     }
                 }
 
@@ -139,6 +187,20 @@ public class DiceTable : MonoBehaviour
                 }
             }
         }
+    }
+
+    bool IsValidRandomDiceEffect(DiceEffect randomDiceEffect)
+    {
+        bool uniqueDiceEffect = true;
+        foreach (DiceEffect effect in diceEffectsByNumber)
+        {
+            if (effect == randomDiceEffect)
+            {
+                uniqueDiceEffect = false;
+            }
+        }
+
+        return uniqueDiceEffect;
     }
 
     IEnumerator RollaffectedDice()

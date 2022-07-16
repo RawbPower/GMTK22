@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daaf1e94d72e0bf41b5c08828f9e67a4, type: 3}
   m_Name: Normal
   m_EditorClassIdentifier: 
-  name: Normal
+  effectName: Normal
   diceFaces:
-  - {fileID: -1706749369, guid: 5ebec2f35d80c774ea094546c34008ff, type: 3}
-  - {fileID: 708223836, guid: 5ebec2f35d80c774ea094546c34008ff, type: 3}
-  - {fileID: -254555669, guid: 5ebec2f35d80c774ea094546c34008ff, type: 3}
-  - {fileID: -647560969, guid: 5ebec2f35d80c774ea094546c34008ff, type: 3}
-  - {fileID: -2064226342, guid: 5ebec2f35d80c774ea094546c34008ff, type: 3}
-  - {fileID: 1497550675, guid: 5ebec2f35d80c774ea094546c34008ff, type: 3}
+  - {fileID: 1412936529, guid: 58355bdbdaee8c74d91edcc334335aa1, type: 3}
+  - {fileID: -506997724, guid: 58355bdbdaee8c74d91edcc334335aa1, type: 3}
+  - {fileID: -483664029, guid: 58355bdbdaee8c74d91edcc334335aa1, type: 3}
+  - {fileID: 1131073206, guid: 58355bdbdaee8c74d91edcc334335aa1, type: 3}
+  - {fileID: -2098380761, guid: 58355bdbdaee8c74d91edcc334335aa1, type: 3}
+  - {fileID: 1393864239, guid: 58355bdbdaee8c74d91edcc334335aa1, type: 3}
+  tint: {r: 1, g: 1, b: 1, a: 1}

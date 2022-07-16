@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdf9ede3f50b0a46b5966ffaafaffc9, type: 3}
   m_Name: Column1
   m_EditorClassIdentifier: 
-  name: Column x1
+  effectName: Column x1
   diceFaces:
   - {fileID: -1385717969, guid: 99256cbbcd7c8b84d8cba44882d91edb, type: 3}
   - {fileID: 337126924, guid: 99256cbbcd7c8b84d8cba44882d91edb, type: 3}
@@ -20,6 +20,7 @@ MonoBehaviour:
   - {fileID: 1192776505, guid: 99256cbbcd7c8b84d8cba44882d91edb, type: 3}
   - {fileID: -383159514, guid: 99256cbbcd7c8b84d8cba44882d91edb, type: 3}
   - {fileID: 1105430, guid: 99256cbbcd7c8b84d8cba44882d91edb, type: 3}
+  tint: {r: 1, g: 1, b: 1, a: 1}
   adjacentNorth: 1
   adjacentNorthEast: 0
   adjacentEast: 0

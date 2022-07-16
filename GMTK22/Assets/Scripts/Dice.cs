@@ -56,6 +56,7 @@ public class Dice : MonoBehaviour
     {
         currentSpriteFaceIndex = number-1;
         spriteRenderer.sprite = diceEffect.diceFaces[currentSpriteFaceIndex];
+        spriteRenderer.material.color = diceEffect.tint;
     }
 
     public void RollDice()
