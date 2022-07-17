@@ -9,7 +9,8 @@ public abstract class DiceEffect : ScriptableObject
     {
         NONE,
         ODD_EVEN,
-        SAME_FACE
+        SAME_FACE,
+        LOCK
     }
 
     public string effectName;

@@ -527,7 +527,7 @@ public class DiceTable : MonoBehaviour
             {
                 for (int y = 0; y < dicePerColumn; y++)
                 {
-                    if (caveat == DiceEffect.EffectCaveat.NONE)
+                    if (caveat == DiceEffect.EffectCaveat.NONE || caveat == DiceEffect.EffectCaveat.LOCK)
                     {
                         affectedDice.Add(diceGrid[x, y].dice);
                     }
@@ -552,9 +552,9 @@ public class DiceTable : MonoBehaviour
         {
             foreach (Vector2Int affectedIndex in affectedIndices)
             {
-                if (affectedIndex.x >= 0 && affectedIndex.x < dicePerRow && affectedIndex.y >= 0 && affectedIndex.y < dicePerColumn)
+                if (affectedIndex.x >= 0 && affectedIndex.x < dicePerRow && affectedIndex.y >= 0 && affectedIndex.y < dicePerColumn && diceGrid[affectedIndex.x, affectedIndex.y].dice.diceEffect.effectCaveat != DiceEffect.EffectCaveat.LOCK)
                 {
-                    if (caveat == DiceEffect.EffectCaveat.NONE)
+                    if (caveat == DiceEffect.EffectCaveat.NONE || caveat == DiceEffect.EffectCaveat.LOCK)
                     {
                         affectedDice.Add(diceGrid[affectedIndex.x, affectedIndex.y].dice);
                     }
