@@ -3670,13 +3670,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generations:
-  - maxScore: 1000
+  - maxScore: 10000
     effects:
     - {fileID: 11400000, guid: 8bcabb21499211745bc4d2df279db049, type: 2}
     - {fileID: 11400000, guid: c95dce8234e67324b813b1d01b01cc60, type: 2}
     - {fileID: 11400000, guid: f9a3ccf3e28994b4aa30c6fa40703ad0, type: 2}
     - {fileID: 11400000, guid: 8939dd55c52e6b24b86def57d2fff850, type: 2}
-  - maxScore: 2000
+  - maxScore: 20000
     effects:
     - {fileID: 11400000, guid: 8bcabb21499211745bc4d2df279db049, type: 2}
     - {fileID: 11400000, guid: c95dce8234e67324b813b1d01b01cc60, type: 2}
@@ -3685,7 +3685,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 8939dd55c52e6b24b86def57d2fff850, type: 2}
     - {fileID: 11400000, guid: 1b5eac000e496234d8a0ae1afae58722, type: 2}
     - {fileID: 11400000, guid: 6340f92197dcac64f8e4a8af749d939b, type: 2}
-  - maxScore: 2500
+  - maxScore: 25000
     effects:
     - {fileID: 11400000, guid: 8bcabb21499211745bc4d2df279db049, type: 2}
     - {fileID: 11400000, guid: c95dce8234e67324b813b1d01b01cc60, type: 2}
@@ -3694,7 +3694,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 1b5eac000e496234d8a0ae1afae58722, type: 2}
     - {fileID: 11400000, guid: 6340f92197dcac64f8e4a8af749d939b, type: 2}
     - {fileID: 11400000, guid: 2119ed824939dff46a84380f8d10d64c, type: 2}
-  - maxScore: 3000
+  - maxScore: 30000
     effects:
     - {fileID: 11400000, guid: 8bcabb21499211745bc4d2df279db049, type: 2}
     - {fileID: 11400000, guid: c95dce8234e67324b813b1d01b01cc60, type: 2}
