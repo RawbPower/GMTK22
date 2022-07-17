@@ -21,11 +21,13 @@ MonoBehaviour:
   - {fileID: 310588861, guid: 8a593129c6101b64b8ae37434ffc3e17, type: 3}
   - {fileID: -834161744, guid: 8a593129c6101b64b8ae37434ffc3e17, type: 3}
   tint: {r: 1, g: 1, b: 1, a: 1}
+  effectCaveat: 4
+  distance: 1
   adjacentNorth: 0
   adjacentNorthEast: 1
   adjacentEast: 0
-  adjacentSouthEast: 0
+  adjacentSouthEast: 1
   adjacentSouth: 0
-  adjacentSouthWest: 0
+  adjacentSouthWest: 1
   adjacentWest: 0
-  adjacentNorthWest: 0
+  adjacentNorthWest: 1

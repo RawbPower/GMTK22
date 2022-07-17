@@ -10,13 +10,15 @@ public abstract class DiceEffect : ScriptableObject
         NONE,
         ODD_EVEN,
         SAME_FACE,
-        LOCK
+        LOCK,
+        RANDOM_DIRECTION,
     }
 
     public string effectName;
     public Sprite[] diceFaces;
     public Color tint = Color.white;
     public EffectCaveat effectCaveat;
+    public int distance = 1;
 
     public virtual (List<Vector2Int>, EffectCaveat) GetEffectIndices(Vector2Int diceIndex)
     {

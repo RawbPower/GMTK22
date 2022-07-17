@@ -781,6 +781,7 @@ MonoBehaviour:
   vertMatched: 0
   diagRMatched: 0
   diagLMatched: 0
+  randomNeighbours: []
 --- !u!212 &483180092
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1270,6 +1271,7 @@ MonoBehaviour:
   vertMatched: 0
   diagRMatched: 0
   diagLMatched: 0
+  randomNeighbours: []
 --- !u!212 &599217290
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2056,6 +2058,7 @@ MonoBehaviour:
   vertMatched: 0
   diagRMatched: 0
   diagLMatched: 0
+  randomNeighbours: []
 --- !u!212 &892212829
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2857,6 +2860,7 @@ MonoBehaviour:
   vertMatched: 0
   diagRMatched: 0
   diagLMatched: 0
+  randomNeighbours: []
 --- !u!212 &1277313152
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2992,6 +2996,7 @@ MonoBehaviour:
   vertMatched: 0
   diagRMatched: 0
   diagLMatched: 0
+  randomNeighbours: []
 --- !u!212 &1290425483
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3078,6 +3083,14 @@ PrefabInstance:
       propertyPath: scoreUI
       value: 
       objectReference: {fileID: 1727560519}
+    - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: dicePerRow
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: dicePerColumn
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
       propertyPath: endGameOverlay
       value: 
@@ -3871,6 +3884,7 @@ MonoBehaviour:
   vertMatched: 0
   diagRMatched: 0
   diagLMatched: 0
+  randomNeighbours: []
 --- !u!212 &1585852316
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4082,6 +4096,7 @@ MonoBehaviour:
   vertMatched: 0
   diagRMatched: 0
   diagLMatched: 0
+  randomNeighbours: []
 --- !u!212 &1697030929
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4858,6 +4873,7 @@ MonoBehaviour:
   vertMatched: 0
   diagRMatched: 0
   diagLMatched: 0
+  randomNeighbours: []
 --- !u!212 &1832930898
 SpriteRenderer:
   m_ObjectHideFlags: 0
