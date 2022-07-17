@@ -71,24 +71,32 @@ public class Dice : MonoBehaviour
     {
         if (!rolling)
         {
-            audioManager.Play("Roll");
             StartCoroutine(RunDiceRollingAnimation());
             StartCoroutine(RunDiceScalingAnimation());
             Debug.Log("Roll Dice: " + number);
         }
     }
 
-    public void MatchDice()
+    public void PlayDiceRollSound()
     {
-        StartCoroutine(PlayMatchAnimtion());
+        audioManager.Play("Roll");
     }
 
-    IEnumerator PlayMatchAnimtion()
+    public void MatchDice(bool playSound = false)
+    {
+        StartCoroutine(PlayMatchAnimtion(playSound));
+    }
+
+    IEnumerator PlayMatchAnimtion(bool playSound)
     {
         animator.SetTrigger("Match");
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         RollDice();
         ResetMatched();
+        if (playSound)
+        {
+            audioManager.Play("Roll");
+        }
     }
 
     public void ResetMatched()

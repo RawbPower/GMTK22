@@ -182,8 +182,9 @@ public class DiceTable : MonoBehaviour
                     if (selectedDice)
                     {
                         selectedDice.RollDice();
+                        audioManager.Play("Roll");
 
-                        StartCoroutine(RollaffectedDice());
+                        StartCoroutine(RollAffectedDice());
                     }
                 }
             }
@@ -191,11 +192,13 @@ public class DiceTable : MonoBehaviour
             if (!AreAnyDiceRolling())
             {
                 Dice[] matchedDice = DetectMatches();
+                bool playSound = true;
 
                 foreach (Dice matchedDie in matchedDice)
                 {
                     affectedNumbers[matchedDie.GetNumber() - 1] = matchedDie.GetNumber();
-                    matchedDie.MatchDice();
+                    matchedDie.MatchDice(playSound);
+                    playSound = false;
                 }
             }
         }
@@ -215,7 +218,7 @@ public class DiceTable : MonoBehaviour
         return uniqueDiceEffect;
     }
 
-    IEnumerator RollaffectedDice()
+    IEnumerator RollAffectedDice()
     {
         yield return new WaitForSeconds(affectedDiceRollDelay);
         foreach (Dice dice in affectedDice)
