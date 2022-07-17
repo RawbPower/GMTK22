@@ -21,10 +21,11 @@ public class DiceTable : MonoBehaviour
     public GameObject endGameOverlay;
     public GameObject scoreUI;
     public DiceEffect defaultDiceEffect;
+    public float comboIncreasePerMatch;
 
     private bool chainReaction;
     private int score;
-    private float comboMult;
+    private float combo;
     private DiceSlot[,] diceGrid;
     private float gridHeight;
     private float gridWidth;
@@ -62,6 +63,7 @@ public class DiceTable : MonoBehaviour
         }
 
         score = 0;
+        combo = 1.0f;
         scoreUI.GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + score.ToString();
 
         for (int i = 0; i < dicePerRow; i++)
@@ -143,7 +145,7 @@ public class DiceTable : MonoBehaviour
                     int attempts = 0;
                     while (!uniqueDiceEffect && attempts < 20)
                     {
-                        randomDiceEffect = diceEffectPool.GetRandomDiceEffect();
+                        randomDiceEffect = diceEffectPool.GetRandomDiceEffect(score);
                         uniqueDiceEffect = IsValidRandomDiceEffect(randomDiceEffect);
                         attempts++;
                     }
@@ -263,6 +265,7 @@ public class DiceTable : MonoBehaviour
                     {
                         if (selectedDice)
                         {
+                            combo = 1.0f;
                             selectedDice.RollDice();
                             audioManager.Play("Roll");
 
@@ -289,6 +292,11 @@ public class DiceTable : MonoBehaviour
 
     bool IsValidRandomDiceEffect(DiceEffect randomDiceEffect)
     {
+        if (randomDiceEffect is NormalDiceEffect)
+        {
+            return true;
+        }
+
         bool uniqueDiceEffect = true;
         foreach (DiceEffect effect in diceEffectsByNumber)
         {
@@ -434,7 +442,7 @@ public class DiceTable : MonoBehaviour
                                 break;
                             }
                         }
-                        score += baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f);
+                        score += Mathf.FloorToInt(combo * (baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f)));
 
                         if (playSounds)
                         {
@@ -494,7 +502,7 @@ public class DiceTable : MonoBehaviour
                                 break;
                             }
                         }
-                        score += baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f);
+                        score += Mathf.FloorToInt(combo * (baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f)));
 
                         if (playSounds)
                         {
@@ -554,7 +562,7 @@ public class DiceTable : MonoBehaviour
                                 break;
                             }
                         }
-                        score += baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f);
+                        score += Mathf.FloorToInt(combo * (baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f)));
 
                         if (playSounds)
                         {
@@ -614,7 +622,7 @@ public class DiceTable : MonoBehaviour
                                 break;
                             }
                         }
-                        score += Mathf.FloorToInt(baseScore * 1 + (matchesFound - 1) * 0.5f);
+                        score += Mathf.FloorToInt(combo * (baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f)));
 
                         if (playSounds)
                         {
@@ -635,6 +643,7 @@ public class DiceTable : MonoBehaviour
         if (matchesFound > 0)
         {
             scoreUI.GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + score.ToString();
+            combo += comboIncreasePerMatch;
         }
 
         return matchedDice.ToArray();
@@ -676,7 +685,7 @@ public class DiceTable : MonoBehaviour
             {
                 for (int y = 0; y < dicePerColumn; y++)
                 {
-                    if (caveat == DiceEffect.EffectCaveat.NONE || caveat == DiceEffect.EffectCaveat.LOCK)
+                    if (caveat == DiceEffect.EffectCaveat.NONE || caveat == DiceEffect.EffectCaveat.LOCK || caveat == DiceEffect.EffectCaveat.RANDOM_DIRECTION)
                     {
                         if (chainReaction)
                         {
@@ -764,7 +773,7 @@ public class DiceTable : MonoBehaviour
                 {
                     if (affectedIndex.x >= 0 && affectedIndex.x < dicePerRow && affectedIndex.y >= 0 && affectedIndex.y < dicePerColumn && diceGrid[affectedIndex.x, affectedIndex.y].dice.diceEffect.effectCaveat != DiceEffect.EffectCaveat.LOCK)
                     {
-                        if (caveat == DiceEffect.EffectCaveat.NONE || caveat == DiceEffect.EffectCaveat.LOCK)
+                        if (caveat == DiceEffect.EffectCaveat.NONE || caveat == DiceEffect.EffectCaveat.LOCK || caveat == DiceEffect.EffectCaveat.RANDOM_DIRECTION)
                         {
                             if (chainReaction)
                             {

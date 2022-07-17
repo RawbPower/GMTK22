@@ -20,12 +20,14 @@ MonoBehaviour:
   - {fileID: 1706267565, guid: c3641ed160b09ca4f8270b43a1a7b874, type: 3}
   - {fileID: -1552524821, guid: c3641ed160b09ca4f8270b43a1a7b874, type: 3}
   - {fileID: -245013417, guid: c3641ed160b09ca4f8270b43a1a7b874, type: 3}
-  tint: {r: 0.4117647, g: 0.6313726, b: 1, a: 1}
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  effectCaveat: 0
+  distance: 1
   adjacentNorth: 0
   adjacentNorthEast: 0
-  adjacentEast: 2
+  adjacentEast: 1
   adjacentSouthEast: 0
   adjacentSouth: 0
   adjacentSouthWest: 0
-  adjacentWest: 2
+  adjacentWest: 1
   adjacentNorthWest: 0

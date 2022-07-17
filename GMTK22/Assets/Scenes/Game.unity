@@ -1955,7 +1955,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &888921746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3080,9 +3080,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1711130502}
     - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: comboUI
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
       propertyPath: scoreUI
       value: 
       objectReference: {fileID: 1727560519}
+    - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
       propertyPath: dicePerRow
       value: 6
@@ -3099,6 +3107,10 @@ PrefabInstance:
       propertyPath: defaultDiceEffect
       value: 
       objectReference: {fileID: 11400000, guid: 8bcabb21499211745bc4d2df279db049, type: 2}
+    - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+      propertyPath: comboIncreasePerMatch
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -3657,16 +3669,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc941f12ae76f24bb3df261c2f3c7c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effects:
-  - {fileID: 11400000, guid: c95dce8234e67324b813b1d01b01cc60, type: 2}
-  - {fileID: 11400000, guid: 6340f92197dcac64f8e4a8af749d939b, type: 2}
-  - {fileID: 11400000, guid: 8bcabb21499211745bc4d2df279db049, type: 2}
-  - {fileID: 11400000, guid: f9a3ccf3e28994b4aa30c6fa40703ad0, type: 2}
-  - {fileID: 11400000, guid: 1b5eac000e496234d8a0ae1afae58722, type: 2}
-  - {fileID: 11400000, guid: bc9cc0f0019e5004a9c49e357751eb18, type: 2}
-  - {fileID: 11400000, guid: 7706aaf75931f744da96c8fce84ee4d2, type: 2}
-  - {fileID: 11400000, guid: ff358fa3b81d8de4f98ff704ca5475d0, type: 2}
-  - {fileID: 11400000, guid: 2119ed824939dff46a84380f8d10d64c, type: 2}
+  generations:
+  - maxScore: 1000
+    effects:
+    - {fileID: 11400000, guid: 8bcabb21499211745bc4d2df279db049, type: 2}
+    - {fileID: 11400000, guid: c95dce8234e67324b813b1d01b01cc60, type: 2}
+    - {fileID: 11400000, guid: f9a3ccf3e28994b4aa30c6fa40703ad0, type: 2}
+    - {fileID: 11400000, guid: 8939dd55c52e6b24b86def57d2fff850, type: 2}
+  - maxScore: 2000
+    effects:
+    - {fileID: 11400000, guid: 8bcabb21499211745bc4d2df279db049, type: 2}
+    - {fileID: 11400000, guid: c95dce8234e67324b813b1d01b01cc60, type: 2}
+    - {fileID: 11400000, guid: f9a3ccf3e28994b4aa30c6fa40703ad0, type: 2}
+    - {fileID: 11400000, guid: c95dce8234e67324b813b1d01b01cc60, type: 2}
+    - {fileID: 11400000, guid: 8939dd55c52e6b24b86def57d2fff850, type: 2}
+    - {fileID: 11400000, guid: 1b5eac000e496234d8a0ae1afae58722, type: 2}
+    - {fileID: 11400000, guid: 6340f92197dcac64f8e4a8af749d939b, type: 2}
+  - maxScore: 2500
+    effects:
+    - {fileID: 11400000, guid: 8bcabb21499211745bc4d2df279db049, type: 2}
+    - {fileID: 11400000, guid: c95dce8234e67324b813b1d01b01cc60, type: 2}
+    - {fileID: 11400000, guid: f9a3ccf3e28994b4aa30c6fa40703ad0, type: 2}
+    - {fileID: 11400000, guid: 8939dd55c52e6b24b86def57d2fff850, type: 2}
+    - {fileID: 11400000, guid: 1b5eac000e496234d8a0ae1afae58722, type: 2}
+    - {fileID: 11400000, guid: 6340f92197dcac64f8e4a8af749d939b, type: 2}
+    - {fileID: 11400000, guid: 2119ed824939dff46a84380f8d10d64c, type: 2}
+  - maxScore: 3000
+    effects:
+    - {fileID: 11400000, guid: 8bcabb21499211745bc4d2df279db049, type: 2}
+    - {fileID: 11400000, guid: c95dce8234e67324b813b1d01b01cc60, type: 2}
+    - {fileID: 11400000, guid: f9a3ccf3e28994b4aa30c6fa40703ad0, type: 2}
+    - {fileID: 11400000, guid: 8939dd55c52e6b24b86def57d2fff850, type: 2}
+    - {fileID: 11400000, guid: 6340f92197dcac64f8e4a8af749d939b, type: 2}
+    - {fileID: 11400000, guid: 1b5eac000e496234d8a0ae1afae58722, type: 2}
+    - {fileID: 11400000, guid: 2119ed824939dff46a84380f8d10d64c, type: 2}
+    - {fileID: 11400000, guid: 7e0db2fb06f977b4ab40e4f81b512c04, type: 2}
+    - {fileID: 11400000, guid: bc9cc0f0019e5004a9c49e357751eb18, type: 2}
+  - maxScore: -1
+    effects:
+    - {fileID: 11400000, guid: 8bcabb21499211745bc4d2df279db049, type: 2}
+    - {fileID: 11400000, guid: c245f4d1183638d4aa5f7598b8c66d09, type: 2}
+    - {fileID: 11400000, guid: 51b992a8d2fe7334dafe175035f9cea4, type: 2}
+    - {fileID: 11400000, guid: 9e1fecb29839d28468b54337d600ceb5, type: 2}
+    - {fileID: 11400000, guid: 6340f92197dcac64f8e4a8af749d939b, type: 2}
+    - {fileID: 11400000, guid: 1b5eac000e496234d8a0ae1afae58722, type: 2}
+    - {fileID: 11400000, guid: 2119ed824939dff46a84380f8d10d64c, type: 2}
+    - {fileID: 11400000, guid: 7e0db2fb06f977b4ab40e4f81b512c04, type: 2}
+    - {fileID: 11400000, guid: bc9cc0f0019e5004a9c49e357751eb18, type: 2}
 --- !u!4 &1542531417
 Transform:
   m_ObjectHideFlags: 0
@@ -4341,7 +4390,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -4369,7 +4418,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 4.542389, z: 0, w: -9.338509}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
