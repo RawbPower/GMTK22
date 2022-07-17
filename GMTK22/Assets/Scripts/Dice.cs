@@ -20,6 +20,8 @@ public class Dice : MonoBehaviour
     public bool diagRMatched;
     [HideInInspector]
     public bool diagLMatched;
+    [HideInInspector]
+    public List<Vector2Int> randomNeighbours;
 
     private int[] diceHistory;
     private float currentRollingTime;
@@ -34,6 +36,7 @@ public class Dice : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        randomNeighbours = new List<Vector2Int>();
         diceHistory = new int[] { 0, 0, 0, 0, 0, 0 };
         spriteRenderer = GetComponent<SpriteRenderer>();
         diceCollider = GetComponent<BoxCollider2D>();
@@ -75,6 +78,7 @@ public class Dice : MonoBehaviour
             StartCoroutine(RunDiceRollingAnimation());
             StartCoroutine(RunDiceScalingAnimation());
             Debug.Log("Roll Dice: " + number);
+            randomNeighbours = new List<Vector2Int>();
         }
     }
 

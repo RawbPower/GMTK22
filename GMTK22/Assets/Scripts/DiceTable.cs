@@ -168,7 +168,7 @@ public class DiceTable : MonoBehaviour
                         //diceEffectsByNumber[dice.GetNumber() - 1] = newDiceEffects[dice.GetNumber() - 1];
                     }
 
-                    if (dice.diceEffect != diceEffectsByNumber[dice.GetNumber() - 1])
+                    if (dice.diceEffect != diceEffectsByNumber[dice.GetNumber() - 1] && !dice.rolling)
                     {
                         dice.diceEffect = diceEffectsByNumber[dice.GetNumber() - 1];
                     }
@@ -732,28 +732,39 @@ public class DiceTable : MonoBehaviour
         }
         else
         {
-            foreach (Vector2Int affectedIndex in affectedIndices)
+            if (caveat == DiceEffect.EffectCaveat.RANDOM_DIRECTION)
             {
-                if (affectedIndex.x >= 0 && affectedIndex.x < dicePerRow && affectedIndex.y >= 0 && affectedIndex.y < dicePerColumn && diceGrid[affectedIndex.x, affectedIndex.y].dice.diceEffect.effectCaveat != DiceEffect.EffectCaveat.LOCK)
+                List<Vector2Int> newAffectedIndices = new List<Vector2Int>();
+                if (dice.randomNeighbours.Count == 0)
                 {
-                    if (caveat == DiceEffect.EffectCaveat.NONE || caveat == DiceEffect.EffectCaveat.LOCK)
+                    int distance = Mathf.Max(1, dice.diceEffect.distance);
+                    int randomIndex = Random.Range(0, (affectedIndices.Count / distance));
+                    for (int i = randomIndex; i < randomIndex + distance; i++)
                     {
-                        if (chainReaction)
+                        if (affectedIndices[i].x >= 0 && affectedIndices[i].x < dicePerRow && affectedIndices[i].y >= 0 && affectedIndices[i].y < dicePerColumn && diceGrid[affectedIndices[i].x, affectedIndices[i].y].dice.diceEffect.effectCaveat != DiceEffect.EffectCaveat.LOCK)
                         {
-                            if (!affectedDice.Contains(diceGrid[affectedIndex.x, affectedIndex.y].dice))
-                            {
-                                GetAffectedDice(diceGrid[affectedIndex.x, affectedIndex.y].dice, affectedIndex, ref affectedDice);
-                            }
-                            affectedDice.Add(diceGrid[affectedIndex.x, affectedIndex.y].dice);
-                        }
-                        else
-                        {
-                            affectedDice.Add(diceGrid[affectedIndex.x, affectedIndex.y].dice);
+                            newAffectedIndices.Add(affectedIndices[i]);
+                            dice.randomNeighbours.Add(affectedIndices[i]);
                         }
                     }
-                    else if (caveat == DiceEffect.EffectCaveat.ODD_EVEN)
+                }
+                else
+                {
+                    foreach (Vector2Int randomNeighbour in dice.randomNeighbours)
                     {
-                        if (diceGrid[affectedIndex.x, affectedIndex.y].dice.GetNumber() % 2 == dice.GetNumber() % 2)
+                        newAffectedIndices.Add(randomNeighbour);
+                    }
+                }
+
+                affectedIndices = newAffectedIndices;
+            }
+
+            {
+                foreach (Vector2Int affectedIndex in affectedIndices)
+                {
+                    if (affectedIndex.x >= 0 && affectedIndex.x < dicePerRow && affectedIndex.y >= 0 && affectedIndex.y < dicePerColumn && diceGrid[affectedIndex.x, affectedIndex.y].dice.diceEffect.effectCaveat != DiceEffect.EffectCaveat.LOCK)
+                    {
+                        if (caveat == DiceEffect.EffectCaveat.NONE || caveat == DiceEffect.EffectCaveat.LOCK)
                         {
                             if (chainReaction)
                             {
@@ -768,22 +779,40 @@ public class DiceTable : MonoBehaviour
                                 affectedDice.Add(diceGrid[affectedIndex.x, affectedIndex.y].dice);
                             }
                         }
-                    }
-                    else if (caveat == DiceEffect.EffectCaveat.SAME_FACE)
-                    {
-                        if (diceGrid[affectedIndex.x, affectedIndex.y].dice.GetNumber() == dice.GetNumber())
+                        else if (caveat == DiceEffect.EffectCaveat.ODD_EVEN)
                         {
-                            if (chainReaction)
+                            if (diceGrid[affectedIndex.x, affectedIndex.y].dice.GetNumber() % 2 == dice.GetNumber() % 2)
                             {
-                                if (!affectedDice.Contains(diceGrid[affectedIndex.x, affectedIndex.y].dice))
+                                if (chainReaction)
                                 {
-                                    GetAffectedDice(diceGrid[affectedIndex.x, affectedIndex.y].dice, affectedIndex, ref affectedDice);
+                                    if (!affectedDice.Contains(diceGrid[affectedIndex.x, affectedIndex.y].dice))
+                                    {
+                                        GetAffectedDice(diceGrid[affectedIndex.x, affectedIndex.y].dice, affectedIndex, ref affectedDice);
+                                    }
+                                    affectedDice.Add(diceGrid[affectedIndex.x, affectedIndex.y].dice);
                                 }
-                                affectedDice.Add(diceGrid[affectedIndex.x, affectedIndex.y].dice);
+                                else
+                                {
+                                    affectedDice.Add(diceGrid[affectedIndex.x, affectedIndex.y].dice);
+                                }
                             }
-                            else
+                        }
+                        else if (caveat == DiceEffect.EffectCaveat.SAME_FACE)
+                        {
+                            if (diceGrid[affectedIndex.x, affectedIndex.y].dice.GetNumber() == dice.GetNumber())
                             {
-                                affectedDice.Add(diceGrid[affectedIndex.x, affectedIndex.y].dice);
+                                if (chainReaction)
+                                {
+                                    if (!affectedDice.Contains(diceGrid[affectedIndex.x, affectedIndex.y].dice))
+                                    {
+                                        GetAffectedDice(diceGrid[affectedIndex.x, affectedIndex.y].dice, affectedIndex, ref affectedDice);
+                                    }
+                                    affectedDice.Add(diceGrid[affectedIndex.x, affectedIndex.y].dice);
+                                }
+                                else
+                                {
+                                    affectedDice.Add(diceGrid[affectedIndex.x, affectedIndex.y].dice);
+                                }
                             }
                         }
                     }
