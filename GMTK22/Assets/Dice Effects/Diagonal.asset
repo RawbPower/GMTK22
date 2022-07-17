@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fdf9ede3f50b0a46b5966ffaafaffc9, type: 3}
-  m_Name: X1
+  m_Name: Diagonal
   m_EditorClassIdentifier: 
-  effectName: X
+  effectName: Diagonal
   diceFaces:
-  - {fileID: -1061440896, guid: 8a593129c6101b64b8ae37434ffc3e17, type: 3}
-  - {fileID: -1824517532, guid: 8a593129c6101b64b8ae37434ffc3e17, type: 3}
-  - {fileID: -701567751, guid: 8a593129c6101b64b8ae37434ffc3e17, type: 3}
-  - {fileID: 1280008246, guid: 8a593129c6101b64b8ae37434ffc3e17, type: 3}
-  - {fileID: 310588861, guid: 8a593129c6101b64b8ae37434ffc3e17, type: 3}
-  - {fileID: -834161744, guid: 8a593129c6101b64b8ae37434ffc3e17, type: 3}
+  - {fileID: -1755307538, guid: c80cfa315bd1c744d9d57b0b30aded7d, type: 3}
+  - {fileID: -708724105, guid: c80cfa315bd1c744d9d57b0b30aded7d, type: 3}
+  - {fileID: 1051088664, guid: c80cfa315bd1c744d9d57b0b30aded7d, type: 3}
+  - {fileID: -253791022, guid: c80cfa315bd1c744d9d57b0b30aded7d, type: 3}
+  - {fileID: 1984651257, guid: c80cfa315bd1c744d9d57b0b30aded7d, type: 3}
+  - {fileID: -2099724001, guid: c80cfa315bd1c744d9d57b0b30aded7d, type: 3}
   tint: {r: 1, g: 1, b: 1, a: 1}
-  effectCaveat: 0
+  effectCaveat: 4
   distance: 1
   adjacentNorth: 0
   adjacentNorthEast: 1

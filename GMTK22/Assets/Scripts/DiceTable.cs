@@ -143,7 +143,7 @@ public class DiceTable : MonoBehaviour
                     int attempts = 0;
                     while (!uniqueDiceEffect && attempts < 20)
                     {
-                        randomDiceEffect = diceEffectPool.GetRandomDiceEffect();
+                        randomDiceEffect = diceEffectPool.GetRandomDiceEffect(score);
                         uniqueDiceEffect = IsValidRandomDiceEffect(randomDiceEffect);
                         attempts++;
                     }
@@ -289,6 +289,11 @@ public class DiceTable : MonoBehaviour
 
     bool IsValidRandomDiceEffect(DiceEffect randomDiceEffect)
     {
+        if (randomDiceEffect is NormalDiceEffect)
+        {
+            return true;
+        }
+
         bool uniqueDiceEffect = true;
         foreach (DiceEffect effect in diceEffectsByNumber)
         {
@@ -676,7 +681,7 @@ public class DiceTable : MonoBehaviour
             {
                 for (int y = 0; y < dicePerColumn; y++)
                 {
-                    if (caveat == DiceEffect.EffectCaveat.NONE || caveat == DiceEffect.EffectCaveat.LOCK)
+                    if (caveat == DiceEffect.EffectCaveat.NONE || caveat == DiceEffect.EffectCaveat.LOCK || caveat == DiceEffect.EffectCaveat.RANDOM_DIRECTION)
                     {
                         if (chainReaction)
                         {
@@ -764,7 +769,7 @@ public class DiceTable : MonoBehaviour
                 {
                     if (affectedIndex.x >= 0 && affectedIndex.x < dicePerRow && affectedIndex.y >= 0 && affectedIndex.y < dicePerColumn && diceGrid[affectedIndex.x, affectedIndex.y].dice.diceEffect.effectCaveat != DiceEffect.EffectCaveat.LOCK)
                     {
-                        if (caveat == DiceEffect.EffectCaveat.NONE || caveat == DiceEffect.EffectCaveat.LOCK)
+                        if (caveat == DiceEffect.EffectCaveat.NONE || caveat == DiceEffect.EffectCaveat.LOCK || caveat == DiceEffect.EffectCaveat.RANDOM_DIRECTION)
                         {
                             if (chainReaction)
                             {

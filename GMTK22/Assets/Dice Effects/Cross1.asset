@@ -21,7 +21,7 @@ MonoBehaviour:
   - {fileID: 1603104086, guid: 913a8425ad50a3a448351f1813b1b640, type: 3}
   - {fileID: -223807875, guid: 913a8425ad50a3a448351f1813b1b640, type: 3}
   tint: {r: 1, g: 1, b: 1, a: 1}
-  effectCaveat: 4
+  effectCaveat: 0
   distance: 1
   adjacentNorth: 1
   adjacentNorthEast: 0
