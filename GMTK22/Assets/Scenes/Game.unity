@@ -1258,6 +1258,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &616410213 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6669109274011482402, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
+  m_PrefabInstance: {fileID: 1330430784}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2375,12 +2380,43 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
   m_PrefabInstance: {fileID: 1330430784}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 616410213}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2d4212404907d9448c04b647b4ea91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1232805113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616410213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e355d99d86cd3b94d8194c4113e25a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Match3
+    clip: {fileID: 8300000, guid: b687e6189999ccf43899345ed23cb6a5, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Match4
+    clip: {fileID: 8300000, guid: 4c087328e71f3bc4995a253939bd367d, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Start
+    clip: {fileID: 8300000, guid: 589f5ab5aa3e9c94e92dba2194d1200e, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &1251163899
 GameObject:
   m_ObjectHideFlags: 0
@@ -3405,7 +3441,6 @@ MonoBehaviour:
   effects:
   - {fileID: 11400000, guid: c95dce8234e67324b813b1d01b01cc60, type: 2}
   - {fileID: 11400000, guid: 6340f92197dcac64f8e4a8af749d939b, type: 2}
-  - {fileID: 11400000, guid: 0c704bbfdb85e3c418ada565a82c8c55, type: 2}
   - {fileID: 11400000, guid: 8bcabb21499211745bc4d2df279db049, type: 2}
   - {fileID: 11400000, guid: f9a3ccf3e28994b4aa30c6fa40703ad0, type: 2}
   - {fileID: 11400000, guid: 1b5eac000e496234d8a0ae1afae58722, type: 2}

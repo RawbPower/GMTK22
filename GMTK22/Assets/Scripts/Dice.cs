@@ -20,6 +20,7 @@ public class Dice : MonoBehaviour
     [HideInInspector]
     public bool diagLMatched;
 
+    private int[] diceHistory;
     private float currentRollingTime;
     private int currentSpriteFaceIndex;
     private int number;
@@ -27,13 +28,16 @@ public class Dice : MonoBehaviour
     private BoxCollider2D diceCollider;
     private Animator animator;
     private Material defaultMaterial;
+    private AudioManager audioManager;
 
     // Start is called before the first frame update
     void Awake()
     {
+        diceHistory = new int[] { 0, 0, 0, 0, 0, 0 };
         spriteRenderer = GetComponent<SpriteRenderer>();
         diceCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+        audioManager = GetComponent<AudioManager>();
         defaultMaterial = spriteRenderer.material;
         currentSpriteFaceIndex = 0;
         number = Random.Range(1, 7);
@@ -67,6 +71,7 @@ public class Dice : MonoBehaviour
     {
         if (!rolling)
         {
+            audioManager.Play("Roll");
             StartCoroutine(RunDiceRollingAnimation());
             StartCoroutine(RunDiceScalingAnimation());
             Debug.Log("Roll Dice: " + number);

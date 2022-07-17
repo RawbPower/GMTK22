@@ -18,7 +18,7 @@ MonoBehaviour:
   - {fileID: 671235515, guid: 1de38e8fd01bfc448a5617f1f1915c16, type: 3}
   - {fileID: -137821724, guid: 1de38e8fd01bfc448a5617f1f1915c16, type: 3}
   - {fileID: 1770045506, guid: 1de38e8fd01bfc448a5617f1f1915c16, type: 3}
-  - {fileID: -1138573561, guid: 4bcc11968c750ff43a0077dab5426fff, type: 3}
+  - {fileID: -1034417997, guid: 1de38e8fd01bfc448a5617f1f1915c16, type: 3}
   - {fileID: -488880257, guid: 1de38e8fd01bfc448a5617f1f1915c16, type: 3}
   tint: {r: 1, g: 1, b: 1, a: 1}
   effectCaveat: 1

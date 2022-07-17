@@ -32,6 +32,7 @@ public class DiceTable : MonoBehaviour
     private DiceEffect[] diceEffectsByNumber;
     private DiceEffectPool diceEffectPool;
     private bool gameOver;
+    private AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,7 @@ public class DiceTable : MonoBehaviour
         diceEffectsByNumber = new DiceEffect[6];
         gameOver = false;
         endGameOverlay.SetActive(false);
+        audioManager = GetComponent<AudioManager>();
 
         CreateDice();
 
@@ -70,6 +72,8 @@ public class DiceTable : MonoBehaviour
         {
             timer.StartTimer();
         }
+
+        audioManager.Play("Start");
     }
 
     private void OnEnable()
@@ -317,6 +321,7 @@ public class DiceTable : MonoBehaviour
                     {
                         matchesFound++;
                         int baseScore = 300;
+                        bool fourMatch = false;
                         Debug.Log("Horizontal Match Found: " + matchNumber);
                         for (int i = 0; i < dicePerRow; i++)
                         {
@@ -336,6 +341,7 @@ public class DiceTable : MonoBehaviour
                                 }
                                 diceGrid[x + i, y].dice.horMatched = true;
                                 baseScore = 500;
+                                fourMatch = true;
                             }
                             else
                             {
@@ -343,6 +349,15 @@ public class DiceTable : MonoBehaviour
                             }
                         }
                         score += baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f);
+
+                        if (fourMatch)
+                        {
+                            audioManager.Play("Match4");
+                        }
+                        else
+                        {
+                            audioManager.Play("Match3");
+                        }
                     }
                 }
 
@@ -363,6 +378,7 @@ public class DiceTable : MonoBehaviour
                     {
                         matchesFound++;
                         int baseScore = 300;
+                        bool fourMatch = false;
                         Debug.Log("Vertical Match Found: " + matchNumber);
                         for (int i = 0; i < dicePerColumn; i++)
                         {
@@ -382,6 +398,7 @@ public class DiceTable : MonoBehaviour
                                 }
                                 diceGrid[x, y + i].dice.vertMatched = true;
                                 baseScore = 500;
+                                fourMatch = true;
                             }
                             else
                             {
@@ -389,6 +406,15 @@ public class DiceTable : MonoBehaviour
                             }
                         }
                         score += baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f);
+
+                        if (fourMatch)
+                        {
+                            audioManager.Play("Match4");
+                        }
+                        else
+                        {
+                            audioManager.Play("Match3");
+                        }
                     }
                 }
 
@@ -409,6 +435,7 @@ public class DiceTable : MonoBehaviour
                     {
                         matchesFound++;
                         int baseScore = 300;
+                        bool fourMatch = false;
                         Debug.Log("Diagonal Right Match Found: " + matchNumber);
                         for (int i = 0; i < dicePerColumn; i++)
                         {
@@ -428,6 +455,7 @@ public class DiceTable : MonoBehaviour
                                 }
                                 diceGrid[x + i, y + i].dice.diagRMatched = true;
                                 baseScore = 500;
+                                fourMatch = true;
                             }
                             else
                             {
@@ -435,6 +463,15 @@ public class DiceTable : MonoBehaviour
                             }
                         }
                         score += baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f);
+
+                        if (fourMatch)
+                        {
+                            audioManager.Play("Match4");
+                        }
+                        else
+                        {
+                            audioManager.Play("Match3");
+                        }
                     }
                 }
 
@@ -455,6 +492,7 @@ public class DiceTable : MonoBehaviour
                     {
                         matchesFound++;
                         int baseScore = 300;
+                        bool fourMatch = false;
                         Debug.Log("Diagonal Left Match Found: " + matchNumber);
                         for (int i = 0; i < dicePerColumn; i++)
                         {
@@ -474,13 +512,23 @@ public class DiceTable : MonoBehaviour
                                 }
                                 diceGrid[x - i, y + i].dice.diagLMatched = true;
                                 baseScore = 500;
+                                fourMatch = true;
                             }
                             else
                             {
                                 break;
                             }
                         }
-                        score += baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f);
+                        score += Mathf.FloorToInt(baseScore * 1 + (matchesFound - 1) * 0.5f);
+
+                        if (fourMatch)
+                        {
+                            audioManager.Play("Match4");
+                        }
+                        else
+                        {
+                            audioManager.Play("Match3");
+                        }
                     }
                 }
             }

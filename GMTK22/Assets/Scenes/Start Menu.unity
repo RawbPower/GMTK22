@@ -773,6 +773,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1135279069}
   - component: {fileID: 1135279070}
+  - component: {fileID: 1135279071}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -814,6 +815,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897cad2077cae4b31b254e628408d4a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1135279071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135279068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e355d99d86cd3b94d8194c4113e25a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Click
+    clip: {fileID: 8300000, guid: 95b6813c237fe534aaca6f7ab6d2a2a0, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &1365115997
 GameObject:
   m_ObjectHideFlags: 0
