@@ -21,10 +21,11 @@ public class DiceTable : MonoBehaviour
     public GameObject endGameOverlay;
     public GameObject scoreUI;
     public DiceEffect defaultDiceEffect;
+    public float comboIncreasePerMatch;
 
     private bool chainReaction;
     private int score;
-    private float comboMult;
+    private float combo;
     private DiceSlot[,] diceGrid;
     private float gridHeight;
     private float gridWidth;
@@ -62,6 +63,7 @@ public class DiceTable : MonoBehaviour
         }
 
         score = 0;
+        combo = 1.0f;
         scoreUI.GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + score.ToString();
 
         for (int i = 0; i < dicePerRow; i++)
@@ -263,6 +265,7 @@ public class DiceTable : MonoBehaviour
                     {
                         if (selectedDice)
                         {
+                            combo = 1.0f;
                             selectedDice.RollDice();
                             audioManager.Play("Roll");
 
@@ -439,7 +442,7 @@ public class DiceTable : MonoBehaviour
                                 break;
                             }
                         }
-                        score += baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f);
+                        score += Mathf.FloorToInt(combo * (baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f)));
 
                         if (playSounds)
                         {
@@ -499,7 +502,7 @@ public class DiceTable : MonoBehaviour
                                 break;
                             }
                         }
-                        score += baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f);
+                        score += Mathf.FloorToInt(combo * (baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f)));
 
                         if (playSounds)
                         {
@@ -559,7 +562,7 @@ public class DiceTable : MonoBehaviour
                                 break;
                             }
                         }
-                        score += baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f);
+                        score += Mathf.FloorToInt(combo * (baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f)));
 
                         if (playSounds)
                         {
@@ -619,7 +622,7 @@ public class DiceTable : MonoBehaviour
                                 break;
                             }
                         }
-                        score += Mathf.FloorToInt(baseScore * 1 + (matchesFound - 1) * 0.5f);
+                        score += Mathf.FloorToInt(combo * (baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f)));
 
                         if (playSounds)
                         {
@@ -640,6 +643,7 @@ public class DiceTable : MonoBehaviour
         if (matchesFound > 0)
         {
             scoreUI.GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + score.ToString();
+            combo += comboIncreasePerMatch;
         }
 
         return matchedDice.ToArray();
