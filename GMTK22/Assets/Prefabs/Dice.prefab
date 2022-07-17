@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: 9740eb98853418442af1357c447bc039, type: 2}
+  chainMaterial: {fileID: 2100000, guid: 25e5a7e9a9100474888b824ff3982d35, type: 2}
   diceRollTime: 1
   diceSwitchDelay: 0.1
   diceRollScale: 1
