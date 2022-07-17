@@ -22,4 +22,10 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
         audioManager.Play("Click");
     }
+
+    public void HowToPlay()
+    {
+        Application.Quit(SceneManager.GetActiveScene().buildIndex + 2);
+        audioManager.Play("Click");
+    }
 }

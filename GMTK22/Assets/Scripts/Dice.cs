@@ -77,7 +77,7 @@ public class Dice : MonoBehaviour
         {
             StartCoroutine(RunDiceRollingAnimation());
             StartCoroutine(RunDiceScalingAnimation());
-            Debug.Log("Roll Dice: " + number);
+            //Debug.Log("Roll Dice: " + number);
             randomNeighbours = new List<Vector2Int>();
         }
     }

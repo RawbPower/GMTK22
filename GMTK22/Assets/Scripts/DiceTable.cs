@@ -176,15 +176,16 @@ public class DiceTable : MonoBehaviour
                     int attempts = 0;
                     while (!uniqueDiceEffect && attempts < 20)
                     {
-                        randomDiceEffect = diceEffectPool.GetRandomDiceEffect(score);
-                        uniqueDiceEffect = IsValidRandomDiceEffect(randomDiceEffect);
+                        bool allowDuplicateNormals = true;
+                        randomDiceEffect = diceEffectPool.GetRandomDiceEffect(score, ref allowDuplicateNormals);
+                        uniqueDiceEffect = IsValidRandomDiceEffect(randomDiceEffect, allowDuplicateNormals);
                         attempts++;
                     }
 
-                    if (attempts >= 20)
-                    {
-                        Debug.Log("Almost Crashed!");
-                    }
+                    //if (attempts >= 20)
+                    //{
+                        //Debug.Log("Almost Crashed!");
+                    //}
                     newDiceEffects[number - 1] = randomDiceEffect;
                     diceEffectsByNumber[number - 1] = randomDiceEffect;
                 }
@@ -322,9 +323,9 @@ public class DiceTable : MonoBehaviour
         }
     }
 
-    bool IsValidRandomDiceEffect(DiceEffect randomDiceEffect)
+    bool IsValidRandomDiceEffect(DiceEffect randomDiceEffect, bool allowDuplicateNormals)
     {
-        if (randomDiceEffect is NormalDiceEffect)
+        if (allowDuplicateNormals && randomDiceEffect is NormalDiceEffect && randomDiceEffect.effectCaveat != DiceEffect.EffectCaveat.LOCK)
         {
             return true;
         }
@@ -452,13 +453,15 @@ public class DiceTable : MonoBehaviour
                             {
                                 reactiveNumber = 0;
                                 combo += 3.0f;
+                                audioManager.Play("Chain");
                             }
                         }
 
                         matchesFound++;
                         int baseScore = 300;
                         bool fourMatch = false;
-                        Debug.Log("Horizontal Match Found: " + matchNumber);
+                        bool fiveMatch = false;
+                        //Debug.Log("Horizontal Match Found: " + matchNumber);
                         for (int i = 0; i < dicePerRow; i++)
                         {
                             if (i < matchLength)
@@ -478,6 +481,10 @@ public class DiceTable : MonoBehaviour
                                 diceGrid[x + i, y].dice.horMatched = true;
                                 baseScore = 500;
                                 fourMatch = true;
+                                if (fourMatch)
+                                {
+                                    fiveMatch = true;
+                                }
                             }
                             else
                             {
@@ -488,13 +495,20 @@ public class DiceTable : MonoBehaviour
 
                         if (playSounds)
                         {
-                            if (fourMatch)
+                            if (!chainReaction)
                             {
-                                audioManager.Play("Match4");
-                            }
-                            else
-                            {
-                                audioManager.Play("Match3");
+                                if (fiveMatch)
+                                {
+                                    audioManager.Play("Match5");
+                                }
+                                else if (fourMatch)
+                                {
+                                    audioManager.Play("Match4");
+                                }
+                                else
+                                {
+                                    audioManager.Play("Match3");
+                                }
                             }
                         }
                     }
@@ -522,13 +536,15 @@ public class DiceTable : MonoBehaviour
                             {
                                 reactiveNumber = 0;
                                 combo += 3.0f;
+                                audioManager.Play("Chain");
                             }
                         }
 
                         matchesFound++;
                         int baseScore = 300;
                         bool fourMatch = false;
-                        Debug.Log("Vertical Match Found: " + matchNumber);
+                        bool fiveMatch = false;
+                        //Debug.Log("Vertical Match Found: " + matchNumber);
                         for (int i = 0; i < dicePerColumn; i++)
                         {
                             if (i < matchLength)
@@ -548,6 +564,10 @@ public class DiceTable : MonoBehaviour
                                 diceGrid[x, y + i].dice.vertMatched = true;
                                 baseScore = 500;
                                 fourMatch = true;
+                                if (fourMatch)
+                                {
+                                    fiveMatch = true;
+                                }
                             }
                             else
                             {
@@ -558,13 +578,20 @@ public class DiceTable : MonoBehaviour
 
                         if (playSounds)
                         {
-                            if (fourMatch)
+                            if (!chainReaction)
                             {
-                                audioManager.Play("Match4");
-                            }
-                            else
-                            {
-                                audioManager.Play("Match3");
+                                if (fiveMatch)
+                                {
+                                    audioManager.Play("Match5");
+                                }
+                                else if (fourMatch)
+                                {
+                                    audioManager.Play("Match4");
+                                }
+                                else
+                                {
+                                    audioManager.Play("Match3");
+                                }
                             }
                         }
                     }
@@ -592,13 +619,15 @@ public class DiceTable : MonoBehaviour
                             {
                                 reactiveNumber = 0;
                                 combo += 3.0f;
+                                audioManager.Play("Chain");
                             }
                         }
 
                         matchesFound++;
                         int baseScore = 300;
                         bool fourMatch = false;
-                        Debug.Log("Diagonal Right Match Found: " + matchNumber);
+                        bool fiveMatch = false;
+                        //Debug.Log("Diagonal Right Match Found: " + matchNumber);
                         for (int i = 0; i < dicePerColumn; i++)
                         {
                             if (i < matchLength)
@@ -618,6 +647,10 @@ public class DiceTable : MonoBehaviour
                                 diceGrid[x + i, y + i].dice.diagRMatched = true;
                                 baseScore = 500;
                                 fourMatch = true;
+                                if (fourMatch)
+                                {
+                                    fiveMatch = true;
+                                }
                             }
                             else
                             {
@@ -628,13 +661,20 @@ public class DiceTable : MonoBehaviour
 
                         if (playSounds)
                         {
-                            if (fourMatch)
+                            if (!chainReaction)
                             {
-                                audioManager.Play("Match4");
-                            }
-                            else
-                            {
-                                audioManager.Play("Match3");
+                                if (fiveMatch)
+                                {
+                                    audioManager.Play("Match5");
+                                }
+                                else if (fourMatch)
+                                {
+                                    audioManager.Play("Match4");
+                                }
+                                else
+                                {
+                                    audioManager.Play("Match3");
+                                }
                             }
                         }
                     }
@@ -662,13 +702,15 @@ public class DiceTable : MonoBehaviour
                             {
                                 reactiveNumber = 0;
                                 combo += 3.0f;
+                                audioManager.Play("Chain");
                             }
                         }
 
                         matchesFound++;
                         int baseScore = 300;
                         bool fourMatch = false;
-                        Debug.Log("Diagonal Left Match Found: " + matchNumber);
+                        bool fiveMatch = false;
+                        //Debug.Log("Diagonal Left Match Found: " + matchNumber);
                         for (int i = 0; i < dicePerColumn; i++)
                         {
                             if (i < matchLength)
@@ -688,6 +730,10 @@ public class DiceTable : MonoBehaviour
                                 diceGrid[x - i, y + i].dice.diagLMatched = true;
                                 baseScore = 500;
                                 fourMatch = true;
+                                if (fourMatch)
+                                {
+                                    fiveMatch = true;
+                                }
                             }
                             else
                             {
@@ -698,13 +744,20 @@ public class DiceTable : MonoBehaviour
 
                         if (playSounds)
                         {
-                            if (fourMatch)
+                            if (!chainReaction)
                             {
-                                audioManager.Play("Match4");
-                            }
-                            else
-                            {
-                                audioManager.Play("Match3");
+                                if (fiveMatch)
+                                {
+                                    audioManager.Play("Match5");
+                                }
+                                else if (fourMatch)
+                                {
+                                    audioManager.Play("Match4");
+                                }
+                                else
+                                {
+                                    audioManager.Play("Match3");
+                                }
                             }
                         }
                     }

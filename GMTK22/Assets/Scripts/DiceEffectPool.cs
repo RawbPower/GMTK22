@@ -9,6 +9,7 @@ public class DiceEffectPool : MonoBehaviour
     {
         public int maxScore;
         public DiceEffect[] effects;
+        public bool allowDuplicateNormals;
     }
 
     public GenerationInfo[] generations;
@@ -32,17 +33,19 @@ public class DiceEffectPool : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public DiceEffect GetRandomDiceEffect(int score)
+    public DiceEffect GetRandomDiceEffect(int score, ref bool allowDuplicateNormals)
     {
         for (int i = 0; i < generations.Length; i++)
         {
             GenerationInfo info = generations[i];
             if (score < info.maxScore || i == generations.Length-1)
             {
+                allowDuplicateNormals = info.allowDuplicateNormals;
                 return info.effects[Random.Range(0, info.effects.Length)];
             }
         }
 
+        allowDuplicateNormals = generations[0].allowDuplicateNormals;
         return generations[0].effects[Random.Range(0, generations[0].effects.Length)];
     }
 }

@@ -15,24 +15,30 @@ public class Menus : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        audioManager.Play("Click");
+        FindObjectOfType<GlobalAudioManager>().Play("Click");
     }
 
     public void QuitGame()
     {
         Application.Quit();
-        audioManager.Play("Click");
+        FindObjectOfType<GlobalAudioManager>().Play("Click");
     }
 
     public void ReplayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        audioManager.Play("Click");
+        FindObjectOfType<GlobalAudioManager>().Play("Click");
     }
 
     public void MainMenu()
     {
         SceneManager.LoadScene(0);
-        audioManager.Play("Click");
+        FindObjectOfType<GlobalAudioManager>().Play("Click");
+    }
+
+    public void HowToPlay()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        FindObjectOfType<GlobalAudioManager>().Play("Click");
     }
 }
