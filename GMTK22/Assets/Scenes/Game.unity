@@ -3797,11 +3797,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 8bcabb21499211745bc4d2df279db049, type: 2}
     - {fileID: 11400000, guid: c95dce8234e67324b813b1d01b01cc60, type: 2}
     - {fileID: 11400000, guid: f9a3ccf3e28994b4aa30c6fa40703ad0, type: 2}
-    - {fileID: 11400000, guid: c95dce8234e67324b813b1d01b01cc60, type: 2}
     - {fileID: 11400000, guid: 8939dd55c52e6b24b86def57d2fff850, type: 2}
-    - {fileID: 11400000, guid: 1b5eac000e496234d8a0ae1afae58722, type: 2}
     - {fileID: 11400000, guid: 6340f92197dcac64f8e4a8af749d939b, type: 2}
-    allowDuplicateNormals: 0
+    - {fileID: 11400000, guid: 1b5eac000e496234d8a0ae1afae58722, type: 2}
+    allowDuplicateNormals: 1
   - maxScore: 20000
     effects:
     - {fileID: 11400000, guid: 8bcabb21499211745bc4d2df279db049, type: 2}
@@ -3810,7 +3809,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 9e1fecb29839d28468b54337d600ceb5, type: 2}
     - {fileID: 11400000, guid: 1b5eac000e496234d8a0ae1afae58722, type: 2}
     - {fileID: 11400000, guid: 6340f92197dcac64f8e4a8af749d939b, type: 2}
-    allowDuplicateNormals: 0
+    allowDuplicateNormals: 1
   - maxScore: 30000
     effects:
     - {fileID: 11400000, guid: 8bcabb21499211745bc4d2df279db049, type: 2}
