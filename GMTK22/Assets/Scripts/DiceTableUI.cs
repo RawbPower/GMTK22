@@ -20,6 +20,13 @@ public class DiceTableUI : MonoBehaviour
     public Image dice4Image;
     public Image dice5Image;
     public Image dice6Image;
+    public Image chain1Image;
+    public Image chain2Image;
+    public Image chain3Image;
+    public Image chain4Image;
+    public Image chain5Image;
+    public Image chain6Image;
+    public GameObject chainReactionUI;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +59,15 @@ public class DiceTableUI : MonoBehaviour
             dice4Image.sprite = diceTable.GetDiceEffectByNumber(4).diceFaces[3];
             dice5Image.sprite = diceTable.GetDiceEffectByNumber(5).diceFaces[4];
             dice6Image.sprite = diceTable.GetDiceEffectByNumber(6).diceFaces[5];
+
+            chain1Image.enabled = diceTable.GetIsChainReactive(1);
+            chain2Image.enabled = diceTable.GetIsChainReactive(2);
+            chain3Image.enabled = diceTable.GetIsChainReactive(3);
+            chain4Image.enabled = diceTable.GetIsChainReactive(4);
+            chain5Image.enabled = diceTable.GetIsChainReactive(5);
+            chain6Image.enabled = diceTable.GetIsChainReactive(6);
+
+            chainReactionUI.SetActive(diceTable.GetIsChainReaction());
 
             int totalDiceCount = 1 * num1Dice + 2 * num2Dice + 3 * num3Dice + 4 * num4Dice + 5 * num5Dice + 6 * num6Dice;
             diceCount.GetComponent<TMPro.TextMeshProUGUI>().text = totalDiceCount.ToString();

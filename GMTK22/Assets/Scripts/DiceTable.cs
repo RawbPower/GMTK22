@@ -22,7 +22,10 @@ public class DiceTable : MonoBehaviour
     public GameObject scoreUI;
     public DiceEffect defaultDiceEffect;
     public float comboIncreasePerMatch;
+    public float newReactiveNumberDelay;
 
+    private bool waitingForNewReactiveNumber;
+    private int reactiveNumber;
     private bool chainReaction;
     private int score;
     private float combo;
@@ -50,6 +53,7 @@ public class DiceTable : MonoBehaviour
         endGameOverlay.SetActive(false);
         audioManager = GetComponent<AudioManager>();
         affectedDice = new List<Dice>();
+        waitingForNewReactiveNumber = false;
 
         CreateDice();
 
@@ -61,6 +65,9 @@ public class DiceTable : MonoBehaviour
             CreateDice();
             matchedDice = DetectMatches(false);
         }
+
+        reactiveNumber = 0;
+        chainReaction = false;
 
         score = 0;
         combo = 1.0f;
@@ -105,11 +112,35 @@ public class DiceTable : MonoBehaviour
         chainReaction = chain;
     }
 
+    public bool GetIsChainReaction()
+    {
+        return chainReaction;
+    }
+
+    public bool GetIsChainReactive(int num)
+    {
+        return num == reactiveNumber;
+    }
+
+    IEnumerator SetNewReactiveNumber()
+    {
+        waitingForNewReactiveNumber = true;
+        yield return new WaitForSeconds(newReactiveNumberDelay);
+        reactiveNumber = Random.Range(1, 7);
+        waitingForNewReactiveNumber = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (!gameOver)
         {
+            // Check if reactive number is needed
+            if (reactiveNumber == 0 && !waitingForNewReactiveNumber)
+            {
+                StartCoroutine(SetNewReactiveNumber());
+            }
+
             for (int i = 0; i < diceEffectsByNumber.Length; i++)
             {
                 if (diceEffectsByNumber[i] == null)
@@ -270,6 +301,7 @@ public class DiceTable : MonoBehaviour
                             audioManager.Play("Roll");
 
                             StartCoroutine(RollAffectedDice());
+                            chainReaction = false;
                         }
                     }
                 }
@@ -413,6 +445,16 @@ public class DiceTable : MonoBehaviour
 
                     if (foundMatch)
                     {
+                        if (!chainReaction)
+                        {
+                            chainReaction = reactiveNumber == matchNumber;
+                            if (chainReaction)
+                            {
+                                reactiveNumber = 0;
+                                combo += 3.0f;
+                            }
+                        }
+
                         matchesFound++;
                         int baseScore = 300;
                         bool fourMatch = false;
@@ -473,6 +515,16 @@ public class DiceTable : MonoBehaviour
 
                     if (foundMatch)
                     {
+                        if (!chainReaction)
+                        {
+                            chainReaction = reactiveNumber == matchNumber;
+                            if (chainReaction)
+                            {
+                                reactiveNumber = 0;
+                                combo += 3.0f;
+                            }
+                        }
+
                         matchesFound++;
                         int baseScore = 300;
                         bool fourMatch = false;
@@ -533,6 +585,16 @@ public class DiceTable : MonoBehaviour
 
                     if (foundMatch)
                     {
+                        if (!chainReaction)
+                        {
+                            chainReaction = reactiveNumber == matchNumber;
+                            if (chainReaction)
+                            {
+                                reactiveNumber = 0;
+                                combo += 3.0f;
+                            }
+                        }
+
                         matchesFound++;
                         int baseScore = 300;
                         bool fourMatch = false;
@@ -593,6 +655,16 @@ public class DiceTable : MonoBehaviour
 
                     if (foundMatch)
                     {
+                        if (!chainReaction)
+                        {
+                            chainReaction = reactiveNumber == matchNumber;
+                            if (chainReaction)
+                            {
+                                reactiveNumber = 0;
+                                combo += 3.0f;
+                            }
+                        }
+
                         matchesFound++;
                         int baseScore = 300;
                         bool fourMatch = false;
