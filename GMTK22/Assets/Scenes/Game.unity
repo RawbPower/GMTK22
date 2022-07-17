@@ -1258,11 +1258,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &616410213 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6669109274011482402, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-  m_PrefabInstance: {fileID: 1330430784}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1799,7 +1794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &888921746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2380,49 +2375,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
   m_PrefabInstance: {fileID: 1330430784}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 616410213}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2d4212404907d9448c04b647b4ea91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1232805113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 616410213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e355d99d86cd3b94d8194c4113e25a30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: Match3
-    clip: {fileID: 8300000, guid: b687e6189999ccf43899345ed23cb6a5, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Match4
-    clip: {fileID: 8300000, guid: 4c087328e71f3bc4995a253939bd367d, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Start
-    clip: {fileID: 8300000, guid: 589f5ab5aa3e9c94e92dba2194d1200e, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Roll
-    clip: {fileID: 8300000, guid: 55f74056a1f106a429e3f1ce658c265f, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
 --- !u!1 &1251163899
 GameObject:
   m_ObjectHideFlags: 0
@@ -2859,41 +2817,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1727560519}
     - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: offset.x
-      value: 1.9375
-      objectReference: {fileID: 0}
-    - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: offset.y
-      value: -0.125
-      objectReference: {fileID: 0}
-    - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: dicePerRow
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: matchLength
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: dicePerColumn
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
       propertyPath: endGameOverlay
       value: 
       objectReference: {fileID: 47316305}
-    - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: gameoverOverlay
-      value: 
-      objectReference: {fileID: 47316305}
-    - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: affectedDiceRollDelay
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
-      propertyPath: effectedDiceRollDelay
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 6669109274011482404, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
       propertyPath: m_RootOrder
       value: 15

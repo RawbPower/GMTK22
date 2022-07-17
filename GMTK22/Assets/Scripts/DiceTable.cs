@@ -97,109 +97,175 @@ public class DiceTable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!AreAnyDiceRolling() && !gameOver)
+        if (!gameOver)
         {
-            if (!AreAnyDiceMatched())
+            for (int i = 0; i < diceEffectsByNumber.Length; i++)
             {
-                DiceEffect[] newDiceEffects = new DiceEffect[6];
-                foreach (int number in affectedNumbers)
+                if (diceEffectsByNumber[i] == null)
                 {
-                    if (number > 0 && newDiceEffects[number - 1] == null)
+                    for (int x = 0; x < dicePerRow; x++)
                     {
-                        bool uniqueDiceEffect = false;
-                        DiceEffect randomDiceEffect = null;
-                        int attempts = 0;
-                        while (!uniqueDiceEffect && attempts < 20)
+                        for (int y = 0; y < dicePerColumn; y++)
                         {
-                            randomDiceEffect = diceEffectPool.GetRandomDiceEffect();
-                            uniqueDiceEffect = IsValidRandomDiceEffect(randomDiceEffect);
-                            attempts++;
+                            Dice dice = diceGrid[x, y].dice;
+                            if (dice.GetNumber() - 1 == i)
+                            {
+                                diceEffectsByNumber[dice.GetNumber() - 1] = dice.diceEffect;
+                            }
                         }
-                        if (attempts >= 20)
-                        {
-                            Debug.Log("Almost Crashed!");
-                        }
-                        newDiceEffects[number-1] = randomDiceEffect;
-                        diceEffectsByNumber[number - 1] = randomDiceEffect;
-                    }
-                }
-
-                for (int i = 0; i < dicePerRow; i++)
-                {
-                    for (int j = 0; j < dicePerColumn; j++)
-                    {
-                        Dice dice = diceGrid[i, j].dice;
-                        if (dice.GetNumber() == affectedNumbers[dice.GetNumber() - 1])
-                        {
-                            dice.diceEffect = diceEffectsByNumber[dice.GetNumber() - 1];
-                            //diceEffectsByNumber[dice.GetNumber() - 1] = newDiceEffects[dice.GetNumber() - 1];
-                        }
-
-                        if (dice.diceEffect != diceEffectsByNumber[dice.GetNumber() - 1])
-                        {
-                            dice.diceEffect = diceEffectsByNumber[dice.GetNumber() - 1];
-                        }
-                    }
-                }
-
-                affectedNumbers = new int[] { 0, 0, 0, 0, 0, 0 };
-
-                Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                mouseWorldPosition.z = 0.0f;
-
-                Dice selectedDice = null;
-                Vector2Int selectedDiceIndex = new Vector2Int(0, 0);
-                for (int i = 0; i < dicePerRow; i++)
-                {
-                    for (int j = 0; j < dicePerColumn; j++)
-                    {
-                        Dice dice = diceGrid[i, j].dice;
-                        if (dice.IsPointOnDice(mouseWorldPosition))
-                        {
-                            dice.HighlightDice();
-                            selectedDice = diceGrid[i, j].dice;
-                            selectedDiceIndex = new Vector2Int(i, j);
-                        }
-                        else
-                        {
-                            dice.UnhighlightDice();
-                        }
-                    }
-                }
-
-                affectedDice = new Dice[0];
-                if (selectedDice)
-                {
-                    affectedDice = GetAffectedDice(selectedDice, selectedDiceIndex);
-                    foreach (Dice dice in affectedDice)
-                    {
-                        dice.HighlightDice();
-                    }
-                }
-
-                // If dice is clicked roll it
-                if (Input.GetMouseButtonDown(0))
-                {
-                    if (selectedDice)
-                    {
-                        selectedDice.RollDice();
-                        audioManager.Play("Roll");
-
-                        StartCoroutine(RollAffectedDice());
                     }
                 }
             }
 
+            DiceEffect[] newDiceEffects = new DiceEffect[6];
+            foreach (int number in affectedNumbers)
+            {
+                if (number > 0 && newDiceEffects[number - 1] == null)
+                {
+                    bool uniqueDiceEffect = false;
+                    DiceEffect randomDiceEffect = null;
+                    int attempts = 0;
+                    while (!uniqueDiceEffect && attempts < 20)
+                    {
+                        randomDiceEffect = diceEffectPool.GetRandomDiceEffect();
+                        uniqueDiceEffect = IsValidRandomDiceEffect(randomDiceEffect);
+                        attempts++;
+                    }
+
+                    if (attempts >= 20)
+                    {
+                        Debug.Log("Almost Crashed!");
+                    }
+                    newDiceEffects[number - 1] = randomDiceEffect;
+                    diceEffectsByNumber[number - 1] = randomDiceEffect;
+                }
+            }
+
+            for (int i = 0; i < dicePerRow; i++)
+            {
+                for (int j = 0; j < dicePerColumn; j++)
+                {
+                    Dice dice = diceGrid[i, j].dice;
+                    if (dice.GetNumber() == affectedNumbers[dice.GetNumber() - 1])
+                    {
+                        dice.diceEffect = diceEffectsByNumber[dice.GetNumber() - 1];
+                        //diceEffectsByNumber[dice.GetNumber() - 1] = newDiceEffects[dice.GetNumber() - 1];
+                    }
+
+                    if (dice.diceEffect != diceEffectsByNumber[dice.GetNumber() - 1])
+                    {
+                        dice.diceEffect = diceEffectsByNumber[dice.GetNumber() - 1];
+                    }
+                }
+            }
+
+            affectedNumbers = new int[] { 0, 0, 0, 0, 0, 0 };
+
             if (!AreAnyDiceRolling())
             {
-                Dice[] matchedDice = DetectMatches();
-                bool playSound = true;
-
-                foreach (Dice matchedDie in matchedDice)
+                if (!AreAnyDiceMatched())
                 {
-                    affectedNumbers[matchedDie.GetNumber() - 1] = matchedDie.GetNumber();
-                    matchedDie.MatchDice(playSound);
-                    playSound = false;
+                    /*DiceEffect[] newDiceEffects = new DiceEffect[6];
+                    foreach (int number in affectedNumbers)
+                    {
+                        if (number > 0 && newDiceEffects[number - 1] == null)
+                        {
+                            bool uniqueDiceEffect = false;
+                            DiceEffect randomDiceEffect = null;
+                            int attempts = 0;
+                            while (!uniqueDiceEffect && attempts < 20)
+                            {
+                                randomDiceEffect = diceEffectPool.GetRandomDiceEffect();
+                                uniqueDiceEffect = IsValidRandomDiceEffect(randomDiceEffect);
+                                attempts++;
+                            }
+
+                            if (attempts >= 20)
+                            {
+                                Debug.Log("Almost Crashed!");
+                            }
+                            newDiceEffects[number-1] = randomDiceEffect;
+                            diceEffectsByNumber[number - 1] = randomDiceEffect;
+                        }
+                    }
+
+                    for (int i = 0; i < dicePerRow; i++)
+                    {
+                        for (int j = 0; j < dicePerColumn; j++)
+                        {
+                            Dice dice = diceGrid[i, j].dice;
+                            if (dice.GetNumber() == affectedNumbers[dice.GetNumber() - 1])
+                            {
+                                dice.diceEffect = diceEffectsByNumber[dice.GetNumber() - 1];
+                                //diceEffectsByNumber[dice.GetNumber() - 1] = newDiceEffects[dice.GetNumber() - 1];
+                            }
+
+                            if (dice.diceEffect != diceEffectsByNumber[dice.GetNumber() - 1])
+                            {
+                                dice.diceEffect = diceEffectsByNumber[dice.GetNumber() - 1];
+                            }
+                        }
+                    }
+
+                    affectedNumbers = new int[] { 0, 0, 0, 0, 0, 0 };*/
+
+                    Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    mouseWorldPosition.z = 0.0f;
+
+                    Dice selectedDice = null;
+                    Vector2Int selectedDiceIndex = new Vector2Int(0, 0);
+                    for (int i = 0; i < dicePerRow; i++)
+                    {
+                        for (int j = 0; j < dicePerColumn; j++)
+                        {
+                            Dice dice = diceGrid[i, j].dice;
+                            if (dice.IsPointOnDice(mouseWorldPosition))
+                            {
+                                dice.HighlightDice();
+                                selectedDice = diceGrid[i, j].dice;
+                                selectedDiceIndex = new Vector2Int(i, j);
+                            }
+                            else
+                            {
+                                dice.UnhighlightDice();
+                            }
+                        }
+                    }
+
+                    affectedDice = new Dice[0];
+                    if (selectedDice)
+                    {
+                        affectedDice = GetAffectedDice(selectedDice, selectedDiceIndex);
+                        foreach (Dice dice in affectedDice)
+                        {
+                            dice.HighlightDice();
+                        }
+                    }
+
+                    // If dice is clicked roll it
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        if (selectedDice)
+                        {
+                            selectedDice.RollDice();
+                            audioManager.Play("Roll");
+
+                            StartCoroutine(RollAffectedDice());
+                        }
+                    }
+                }
+
+                if (!AreAnyDiceRolling())
+                {
+                    Dice[] matchedDice = DetectMatches();
+                    bool playSound = true;
+
+                    foreach (Dice matchedDie in matchedDice)
+                    {
+                        affectedNumbers[matchedDie.GetNumber() - 1] = matchedDie.GetNumber();
+                        matchedDie.MatchDice(playSound);
+                        playSound = false;
+                    }
                 }
             }
         }
