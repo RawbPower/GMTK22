@@ -10,6 +10,7 @@ public class DiceTable : MonoBehaviour
         public Vector2 position;
     }
 
+    public Vector2 offset;
     public int dicePerRow;
     public int dicePerColumn;
     public float diceSpacing;
@@ -234,7 +235,7 @@ public class DiceTable : MonoBehaviour
         gridWidth = dicePerRow * diceWidth + diceSpacing * (dicePerRow - 1);
         gridHeight = dicePerColumn * diceHeight + diceSpacing * (dicePerColumn - 1);
 
-        Vector2 topLeftPos = new Vector2(-gridWidth * 0.5f + diceWidth * 0.5f, gridHeight * 0.5f - diceHeight * 0.5f);
+        Vector2 topLeftPos = new Vector2(-gridWidth * 0.5f + diceWidth * 0.5f + offset.x, gridHeight * 0.5f - diceHeight * 0.5f + offset.y);
         Vector2 diceSeparation = new Vector2(diceWidth + diceSpacing, -diceHeight - diceSpacing);
 
         for (int i = 0; i < dicePerRow; i++)
