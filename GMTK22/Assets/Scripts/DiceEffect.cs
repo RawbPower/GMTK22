@@ -4,15 +4,23 @@ using UnityEngine;
 
 public abstract class DiceEffect : ScriptableObject
 {
+    [System.Serializable]
+    public enum EffectCaveat
+    {
+        NONE,
+        ODD_EVEN
+    }
+
     public string effectName;
     public Sprite[] diceFaces;
     public Color tint = Color.white;
+    public EffectCaveat effectCaveat;
 
-    public virtual List<Vector2Int> GetEffectIndices(Vector2Int diceIndex)
+    public virtual (List<Vector2Int>, EffectCaveat) GetEffectIndices(Vector2Int diceIndex)
     {
         List<Vector2Int> diceIndices = new List<Vector2Int>();
 
-        return diceIndices;
+        return (diceIndices, effectCaveat);
     }
 
     public virtual string GetName()

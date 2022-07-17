@@ -103,10 +103,16 @@ public class DiceTable : MonoBehaviour
                     {
                         bool uniqueDiceEffect = false;
                         DiceEffect randomDiceEffect = null;
-                        while (!uniqueDiceEffect)
+                        int attempts = 0;
+                        while (!uniqueDiceEffect && attempts < 20)
                         {
                             randomDiceEffect = diceEffectPool.GetRandomDiceEffect();
                             uniqueDiceEffect = IsValidRandomDiceEffect(randomDiceEffect);
+                            attempts++;
+                        }
+                        if (attempts >= 20)
+                        {
+                            Debug.Log("Almost Crashed!");
                         }
                         newDiceEffects[number-1] = randomDiceEffect;
                         diceEffectsByNumber[number - 1] = randomDiceEffect;
@@ -510,13 +516,25 @@ public class DiceTable : MonoBehaviour
     {
         List<Dice> affectedDice = new List<Dice>();
 
-        List<Vector2Int> affectedIndices = dice.diceEffect.GetEffectIndices(diceIndex);
+        (List<Vector2Int>, DiceEffect.EffectCaveat) affectedIndicesTuple = dice.diceEffect.GetEffectIndices(diceIndex);
+        List<Vector2Int> affectedIndices = affectedIndicesTuple.Item1;
+        DiceEffect.EffectCaveat caveat = affectedIndicesTuple.Item2;
 
         foreach (Vector2Int affectedIndex in affectedIndices)
         {
             if (affectedIndex.x >= 0 && affectedIndex.x < dicePerRow && affectedIndex.y >= 0 && affectedIndex.y < dicePerColumn)
             {
-                affectedDice.Add(diceGrid[affectedIndex.x, affectedIndex.y].dice);
+                if (caveat == DiceEffect.EffectCaveat.NONE)
+                {
+                    affectedDice.Add(diceGrid[affectedIndex.x, affectedIndex.y].dice);
+                }
+                else if (caveat == DiceEffect.EffectCaveat.ODD_EVEN)
+                {
+                    if (diceGrid[affectedIndex.x, affectedIndex.y].dice.GetNumber() % 2 == dice.GetNumber() % 2)
+                    {
+                        affectedDice.Add(diceGrid[affectedIndex.x, affectedIndex.y].dice);
+                    }
+                }
             }
         }
 

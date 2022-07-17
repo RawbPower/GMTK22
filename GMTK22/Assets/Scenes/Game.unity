@@ -1794,7 +1794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &888921746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2818,7 +2818,7 @@ PrefabInstance:
       objectReference: {fileID: 1727560519}
     - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
       propertyPath: dicePerRow
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
       propertyPath: matchLength
@@ -2826,7 +2826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
       propertyPath: dicePerColumn
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6669109274011482403, guid: d1dae3bbf0dc073469332b039283fee7, type: 3}
       propertyPath: endGameOverlay
@@ -3407,9 +3407,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6340f92197dcac64f8e4a8af749d939b, type: 2}
   - {fileID: 11400000, guid: 0c704bbfdb85e3c418ada565a82c8c55, type: 2}
   - {fileID: 11400000, guid: 8bcabb21499211745bc4d2df279db049, type: 2}
-  - {fileID: 11400000, guid: 7e0db2fb06f977b4ab40e4f81b512c04, type: 2}
   - {fileID: 11400000, guid: f9a3ccf3e28994b4aa30c6fa40703ad0, type: 2}
   - {fileID: 11400000, guid: 1b5eac000e496234d8a0ae1afae58722, type: 2}
+  - {fileID: 11400000, guid: bc9cc0f0019e5004a9c49e357751eb18, type: 2}
+  - {fileID: 11400000, guid: 7706aaf75931f744da96c8fce84ee4d2, type: 2}
 --- !u!4 &1542531417
 Transform:
   m_ObjectHideFlags: 0

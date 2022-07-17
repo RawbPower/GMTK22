@@ -22,10 +22,10 @@ MonoBehaviour:
   - {fileID: -2099724001, guid: c80cfa315bd1c744d9d57b0b30aded7d, type: 3}
   tint: {r: 1, g: 1, b: 1, a: 1}
   adjacentNorth: 1
-  adjacentNorthEast: 1
+  adjacentNorthEast: 0
   adjacentEast: 1
-  adjacentSouthEast: 1
+  adjacentSouthEast: 0
   adjacentSouth: 1
-  adjacentSouthWest: 1
+  adjacentSouthWest: 0
   adjacentWest: 1
-  adjacentNorthWest: 1
+  adjacentNorthWest: 0

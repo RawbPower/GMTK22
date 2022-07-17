@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "RingDiceEffect", menuName = "Dice Effects/Ring")]
 public class RingDiceEffect : DiceEffect
 {
-    public override List<Vector2Int> GetEffectIndices(Vector2Int diceIndex)
+    public override (List<Vector2Int>, EffectCaveat) GetEffectIndices(Vector2Int diceIndex)
     {
         List<Vector2Int> diceIndices = new List<Vector2Int>();
 
@@ -26,6 +26,6 @@ public class RingDiceEffect : DiceEffect
         diceIndices.Add(diceIndex + new Vector2Int(-2, 1));
         diceIndices.Add(diceIndex + new Vector2Int(-2, 0));
 
-        return diceIndices;
+        return (diceIndices, effectCaveat);
     }
 }

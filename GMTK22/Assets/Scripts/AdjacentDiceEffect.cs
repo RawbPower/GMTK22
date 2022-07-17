@@ -14,7 +14,7 @@ public class AdjacentDiceEffect : DiceEffect
     public int adjacentWest;
     public int adjacentNorthWest;
 
-    public override List<Vector2Int> GetEffectIndices(Vector2Int diceIndex)
+    public override (List<Vector2Int>, EffectCaveat) GetEffectIndices(Vector2Int diceIndex)
     {
         List<Vector2Int> diceIndices = new List<Vector2Int>();
 
@@ -82,6 +82,6 @@ public class AdjacentDiceEffect : DiceEffect
             diceIndices.Add(new Vector2Int(x, y));
         }
 
-        return diceIndices;
+        return (diceIndices, effectCaveat);
     }
 }

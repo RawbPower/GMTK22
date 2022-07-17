@@ -25,7 +25,7 @@ MonoBehaviour:
   adjacentNorthEast: 0
   adjacentEast: 0
   adjacentSouthEast: 0
-  adjacentSouth: 1
+  adjacentSouth: 0
   adjacentSouthWest: 0
   adjacentWest: 0
   adjacentNorthWest: 0
