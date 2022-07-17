@@ -24,6 +24,7 @@ public class Dice : MonoBehaviour
     public List<Vector2Int> randomNeighbours;
 
     private int[] diceHistory;
+    private int currentDiceHistoryIndex;
     private float currentRollingTime;
     private int currentSpriteFaceIndex;
     private int number;
@@ -38,6 +39,7 @@ public class Dice : MonoBehaviour
     {
         randomNeighbours = new List<Vector2Int>();
         diceHistory = new int[] { 0, 0, 0, 0, 0, 0 };
+        currentDiceHistoryIndex = 0;
         spriteRenderer = GetComponent<SpriteRenderer>();
         diceCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
@@ -52,6 +54,12 @@ public class Dice : MonoBehaviour
         diagLMatched = false;
         RenderDiceFace();
         //RollDice();
+    }
+
+    public void ResetDiceHistory()
+    {
+        diceHistory = new int[] { 0, 0, 0, 0, 0, 0 };
+        currentDiceHistoryIndex = 0;
     }
 
     // Update is called once per frame
@@ -75,6 +83,13 @@ public class Dice : MonoBehaviour
     {
         if (!rolling)
         {
+            diceHistory[currentDiceHistoryIndex] = number;
+            currentDiceHistoryIndex++;
+            if (currentDiceHistoryIndex >= diceHistory.Length)
+            {
+                ResetDiceHistory();
+            }
+
             StartCoroutine(RunDiceRollingAnimation());
             StartCoroutine(RunDiceScalingAnimation());
             //Debug.Log("Roll Dice: " + number);
@@ -132,7 +147,29 @@ public class Dice : MonoBehaviour
             yield return new WaitForSeconds(diceSwitchDelay);
             currentRollingTime += diceSwitchDelay;
         }
+
+        int preNumber = Random.Range(1, 7);
+        while (ArrayContains(diceHistory, preNumber))
+        {
+            preNumber = Random.Range(1, 7);
+        }
+
+        number = preNumber;
+
         rolling = false;
+    }
+
+    bool ArrayContains(int[] array, int num)
+    {
+        foreach (int number in array)
+        {
+            if (number == num)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     IEnumerator RunDiceScalingAnimation()

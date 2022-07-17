@@ -24,6 +24,7 @@ public class DiceTable : MonoBehaviour
     public float comboIncreasePerMatch;
     public float newReactiveNumberDelay;
 
+    private Dice previouslyRolledDice;
     private bool waitingForNewReactiveNumber;
     private int reactiveNumber;
     private bool chainReaction;
@@ -54,6 +55,7 @@ public class DiceTable : MonoBehaviour
         audioManager = GetComponent<AudioManager>();
         affectedDice = new List<Dice>();
         waitingForNewReactiveNumber = false;
+        previouslyRolledDice = null;
 
         CreateDice();
 
@@ -184,7 +186,7 @@ public class DiceTable : MonoBehaviour
 
                     //if (attempts >= 20)
                     //{
-                        //Debug.Log("Almost Crashed!");
+                    //Debug.Log("Almost Crashed!");
                     //}
                     newDiceEffects[number - 1] = randomDiceEffect;
                     diceEffectsByNumber[number - 1] = randomDiceEffect;
@@ -300,6 +302,12 @@ public class DiceTable : MonoBehaviour
                             combo = 1.0f;
                             selectedDice.RollDice();
                             audioManager.Play("Roll");
+
+                            if (previouslyRolledDice != null && previouslyRolledDice != selectedDice)
+                            {
+                                previouslyRolledDice.ResetDiceHistory();
+                            }
+                            previouslyRolledDice = selectedDice;
 
                             StartCoroutine(RollAffectedDice());
                             chainReaction = false;
@@ -873,7 +881,7 @@ public class DiceTable : MonoBehaviour
                 {
                     int distance = Mathf.Max(1, dice.diceEffect.distance);
                     int randomIndex = Random.Range(0, (affectedIndices.Count / distance));
-                    for (int i = randomIndex; i < randomIndex + distance; i++)
+                    for (int i = randomIndex * distance; i < distance * randomIndex + distance; i++)
                     {
                         if (affectedIndices[i].x >= 0 && affectedIndices[i].x < dicePerRow && affectedIndices[i].y >= 0 && affectedIndices[i].y < dicePerColumn && diceGrid[affectedIndices[i].x, affectedIndices[i].y].dice.diceEffect.effectCaveat != DiceEffect.EffectCaveat.LOCK)
                         {

@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectName: Normal
   diceFaces:
-  - {fileID: 1412936529, guid: 58355bdbdaee8c74d91edcc334335aa1, type: 3}
-  - {fileID: -506997724, guid: 58355bdbdaee8c74d91edcc334335aa1, type: 3}
-  - {fileID: -483664029, guid: 58355bdbdaee8c74d91edcc334335aa1, type: 3}
-  - {fileID: 1131073206, guid: 58355bdbdaee8c74d91edcc334335aa1, type: 3}
-  - {fileID: -2098380761, guid: 58355bdbdaee8c74d91edcc334335aa1, type: 3}
-  - {fileID: 1393864239, guid: 58355bdbdaee8c74d91edcc334335aa1, type: 3}
+  - {fileID: 447456049, guid: 2a7820ee9545bdb44bb4e13e3fe3d7e6, type: 3}
+  - {fileID: 210169859, guid: 2a7820ee9545bdb44bb4e13e3fe3d7e6, type: 3}
+  - {fileID: 875326507, guid: 2a7820ee9545bdb44bb4e13e3fe3d7e6, type: 3}
+  - {fileID: 530324484, guid: 2a7820ee9545bdb44bb4e13e3fe3d7e6, type: 3}
+  - {fileID: -1074063849, guid: 2a7820ee9545bdb44bb4e13e3fe3d7e6, type: 3}
+  - {fileID: 1319762799, guid: 2a7820ee9545bdb44bb4e13e3fe3d7e6, type: 3}
   tint: {r: 1, g: 1, b: 1, a: 1}
+  effectCaveat: 0
+  distance: 1

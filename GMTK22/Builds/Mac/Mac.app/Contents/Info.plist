@@ -5,17 +5,17 @@
     <key>CFBundleDevelopmentRegion</key>
     <string>English</string>
     <key>CFBundleExecutable</key>
-    <string>GMTK22</string>
+    <string>Chain Roll-Action</string>
     <key>CFBundleGetInfoString</key>
     <string>Unity Player version 2021.3.6f1 (7da38d85baf6). (c) 2022 Unity Technologies ApS. All rights reserved.</string>
     <key>CFBundleIconFile</key>
     <string>PlayerIcon.icns</string>
     <key>CFBundleIdentifier</key>
-    <string>com.DefaultCompany.GMTK22</string>
+    <string>com.DefaultCompany.Chain-Roll-Action</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
-    <string>GMTK22</string>
+    <string>Chain Roll-Action</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
