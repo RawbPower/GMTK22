@@ -47,13 +47,13 @@ public class DiceTable : MonoBehaviour
 
         CreateDice();
 
-        Dice[] matchedDice = DetectMatches();
+        Dice[] matchedDice = DetectMatches(false);
         while (matchedDice.Length > 0)
         {
             ClearDice();
             diceGrid = new DiceSlot[dicePerRow, dicePerColumn];
             CreateDice();
-            matchedDice = DetectMatches();
+            matchedDice = DetectMatches(false);
         }
 
         score = 0;
@@ -293,7 +293,7 @@ public class DiceTable : MonoBehaviour
         return areAnyDiceMatched;
     }
 
-    private Dice[] DetectMatches()
+    private Dice[] DetectMatches(bool playSounds = true)
     {
         int matchesFound = 0;
         List<Dice> matchedDice = new List<Dice>();
@@ -350,13 +350,16 @@ public class DiceTable : MonoBehaviour
                         }
                         score += baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f);
 
-                        if (fourMatch)
+                        if (playSounds)
                         {
-                            audioManager.Play("Match4");
-                        }
-                        else
-                        {
-                            audioManager.Play("Match3");
+                            if (fourMatch)
+                            {
+                                audioManager.Play("Match4");
+                            }
+                            else
+                            {
+                                audioManager.Play("Match3");
+                            }
                         }
                     }
                 }
@@ -407,13 +410,16 @@ public class DiceTable : MonoBehaviour
                         }
                         score += baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f);
 
-                        if (fourMatch)
+                        if (playSounds)
                         {
-                            audioManager.Play("Match4");
-                        }
-                        else
-                        {
-                            audioManager.Play("Match3");
+                            if (fourMatch)
+                            {
+                                audioManager.Play("Match4");
+                            }
+                            else
+                            {
+                                audioManager.Play("Match3");
+                            }
                         }
                     }
                 }
@@ -464,13 +470,16 @@ public class DiceTable : MonoBehaviour
                         }
                         score += baseScore * Mathf.FloorToInt(1 + (matchesFound - 1) * 0.5f);
 
-                        if (fourMatch)
+                        if (playSounds)
                         {
-                            audioManager.Play("Match4");
-                        }
-                        else
-                        {
-                            audioManager.Play("Match3");
+                            if (fourMatch)
+                            {
+                                audioManager.Play("Match4");
+                            }
+                            else
+                            {
+                                audioManager.Play("Match3");
+                            }
                         }
                     }
                 }
@@ -521,13 +530,16 @@ public class DiceTable : MonoBehaviour
                         }
                         score += Mathf.FloorToInt(baseScore * 1 + (matchesFound - 1) * 0.5f);
 
-                        if (fourMatch)
+                        if (playSounds)
                         {
-                            audioManager.Play("Match4");
-                        }
-                        else
-                        {
-                            audioManager.Play("Match3");
+                            if (fourMatch)
+                            {
+                                audioManager.Play("Match4");
+                            }
+                            else
+                            {
+                                audioManager.Play("Match3");
+                            }
                         }
                     }
                 }
