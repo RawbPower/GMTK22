@@ -5,6 +5,7 @@ using UnityEngine;
 public class Dice : MonoBehaviour
 {
     public Material highlightMaterial;
+    public Material chainMaterial;
     public float diceRollTime;
     public float diceSwitchDelay;
     public float diceRollScale;
@@ -155,9 +156,16 @@ public class Dice : MonoBehaviour
         return diceCollider.bounds.Contains(position);
     }
 
-    public void HighlightDice()
+    public void HighlightDice(bool chainReaction = false)
     {
-        spriteRenderer.material = highlightMaterial;
+        if (!chainReaction)
+        {
+            spriteRenderer.material = highlightMaterial;
+        }
+        else
+        {
+            spriteRenderer.material = chainMaterial;
+        }
     }
 
     public void UnhighlightDice()

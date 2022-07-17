@@ -57,4 +57,9 @@ public class DiceTableUI : MonoBehaviour
             diceCount.GetComponent<TMPro.TextMeshProUGUI>().text = totalDiceCount.ToString();
         }
     }
+
+    public void SetChainReaction(bool chainReaction)
+    {
+        diceTable.SetChainReaction(chainReaction);
+    }
 }

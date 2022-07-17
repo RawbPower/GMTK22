@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6669109274011482404}
   - component: {fileID: 6669109274011482403}
+  - component: {fileID: 1232805113}
   m_Layer: 0
   m_Name: Dice Table
   m_TagString: Untagged
@@ -44,8 +45,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d4212404907d9448c04b647b4ea91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 1.9375, y: -0.125}
   dicePerRow: 5
   dicePerColumn: 5
   diceSpacing: 0.25
   matchLength: 3
   dicePrefab: {fileID: 234826615221663033, guid: 9c4a2a40d2ca59446bb391225c42e796, type: 3}
+  affectedDiceRollDelay: 0.2
+  timer: {fileID: 0}
+  endGameOverlay: {fileID: 0}
+  scoreUI: {fileID: 0}
+--- !u!114 &1232805113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6669109274011482402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e355d99d86cd3b94d8194c4113e25a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Match3
+    clip: {fileID: 8300000, guid: b687e6189999ccf43899345ed23cb6a5, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Match4
+    clip: {fileID: 8300000, guid: 4c087328e71f3bc4995a253939bd367d, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Start
+    clip: {fileID: 8300000, guid: 589f5ab5aa3e9c94e92dba2194d1200e, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Roll
+    clip: {fileID: 8300000, guid: 55f74056a1f106a429e3f1ce658c265f, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
