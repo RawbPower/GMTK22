@@ -8,7 +8,8 @@ public abstract class DiceEffect : ScriptableObject
     public enum EffectCaveat
     {
         NONE,
-        ODD_EVEN
+        ODD_EVEN,
+        SAME_FACE
     }
 
     public string effectName;
